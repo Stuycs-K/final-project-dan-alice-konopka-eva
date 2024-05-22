@@ -3,6 +3,7 @@
   float missedFruits;
   
   void setup(){
+    size(1000,600);
   }
   
   void endGame(){
@@ -21,5 +22,6 @@
   }
   
   void draw(){
+    background(#904A30);
   }
 //}
