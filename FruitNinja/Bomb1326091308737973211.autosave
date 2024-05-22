@@ -1,0 +1,4 @@
+public class Bomb extends UFO {
+  void boom(){
+  }
+}
