@@ -1,7 +1,7 @@
 public class Peach extends Fruit {
     PImage fruit;
   public Peach(){
-  fruit = loadImage("peach.svg");
+  fruit = loadImage("peach.png");
   }
   void split(){
   }

@@ -13,10 +13,13 @@
   }
 
 void keyPressed(){
-
+  move(itemList.get(0));
 } 
   
- 
+ void move(UFO item){
+    item.setXloc(item.getXloc()+40);
+    item.setYloc(item.getYloc()+40);
+ }
   
   void mouseDragged(){
   }
@@ -35,6 +38,6 @@ void keyPressed(){
 itemList.add(watermelon);
     background(#904A30);
     PImage fruit = loadImage(itemList.get(0).getName());
-    image(fruit,0,0);
+    image(fruit,itemList.get(0).getXloc(), itemList.get(0).getYloc());
   }
 //}
