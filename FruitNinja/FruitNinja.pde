@@ -1,7 +1,7 @@
 //public class FruitNinja {
   float score;
   float missedFruits;
-  
+  ArrayList<Fruit> fruits;
   void setup(){
     size(1000,600);
   }

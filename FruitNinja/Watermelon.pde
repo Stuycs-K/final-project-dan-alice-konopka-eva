@@ -1,7 +1,7 @@
 public class Watermelon extends Fruit {
   PImage fruit;
   public Watermelon(){
-  fruit = loadImage("watermelon.png");
+  fruit = loadImage("watermelon.svg");
   }
   void keyPressed(){
     image(fruit,0,0);
