@@ -1,10 +1,16 @@
 public class Watermelon extends Fruit {
   PImage fruit;
   public Watermelon(){
-  fruit = loadImage("watermelon.png");
+  fruit = loadImage("watermelon.svg");
   }
+  String getName(){
+  return "watermelon.png";
+}
   void keyPressed(){
-    image(fruit,0,0);
+   
+  }
+  PImage display(){
+   return fruit;
   }
   void split(){
   }
