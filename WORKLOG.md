@@ -6,9 +6,9 @@
 
 Added basic method and field names into all class according to the prototype, started setup and draw.
 
-### date y
+### 05/23/24
 
-info
+Uploaded images, started with basic methods "skeleton"
 
 
 ## GROUP MEMBER 2 - Eva
