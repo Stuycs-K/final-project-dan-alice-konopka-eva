@@ -13,9 +13,10 @@ info
 
 ## GROUP MEMBER 2 - Eva
 
-### date x
+### date 5/23/24
 
 info
+i made an arraylist to make the watermelon show up and displayed it successfully.
 
 ### date y
 
