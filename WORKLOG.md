@@ -1,17 +1,17 @@
 # Work Log
 
-## GROUP MEMBER 1
+## GROUP MEMBER 1 - Alice
 
-### date x
+### 05/22/24
 
-info
+Added basic method and field names into all class according to the prototype, started setup and draw.
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## GROUP MEMBER 2 - Eva
 
 ### date x
 

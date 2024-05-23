@@ -2,5 +2,6 @@
 # APCS2 Final Project
 THIS DOCUMENT IS REQUIRED
 ## Group Info
+Alice Dan, Eva Konopka
 ## Overview
 ## Instructions
