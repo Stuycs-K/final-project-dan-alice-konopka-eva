@@ -42,8 +42,7 @@ void keyPressed(){
 } 
   
  void move(UFO item){
-    item.setXloc(item.getXloc()+40);
-    item.setYloc(item.getYloc()+40);
+   item.move();
  }
   
   void mouseDragged(){
@@ -60,6 +59,8 @@ void keyPressed(){
   
   void draw(){
     background(#904A30);
-    PImage fruit = loadImage(itemList.get(0).getName());
-    image(fruit,itemList.get(0).getXloc(), itemList.get(0).getYloc());
+    UFO currentIt = itemList.get(0);
+    currentIt.move();
+    PImage fruit = loadImage(currentIt.getName());
+    image(fruit, currentIt .getXloc(), currentIt.getYloc());
   }
