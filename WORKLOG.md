@@ -13,10 +13,10 @@ Uploaded images, started with basic methods "skeleton"
 
 ## GROUP MEMBER 2 - Eva
 
-### date 5/23/24
+### 5/23/24
 
-info
-i made an arraylist to make the watermelon show up and displayed it successfully.
+In class: I made an arraylist to make the watermelon show up and displayed it successfully.
+At home: Randomized which fruit is generated, added correct image files, and made the fruits move in keyPressed() by changing the x and y values with new methods. 
 
 ### date y
 

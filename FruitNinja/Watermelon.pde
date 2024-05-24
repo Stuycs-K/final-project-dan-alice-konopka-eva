@@ -2,28 +2,30 @@ public class Watermelon extends Fruit {
   PImage fruit;
   int xLocation;
   int yLocation;
+  boolean belowScreen;
+  
+  public Watermelon(){
+    fruit = loadImage("watermelon.png");
+  }
+  
+  String getName(){
+    return "watermelon.png";
+  }
   
   int getXloc(){
-  return xLocation;
+    return xLocation;
   }
   
-   int getYloc(){
-  return yLocation;
+  int getYloc(){
+    return yLocation;
   }
-   void setXloc(int num){
-  xLocation=num;
+  void setXloc(int num){
+    xLocation=num;
   }
   
   void setYloc(int num){
-  yLocation=num;
+    yLocation=num;
   }
-  
-  public Watermelon(){
-  fruit = loadImage("watermelon.png");
-  }
-  String getName(){
-  return "watermelon.png";
-}
   
   PImage display(){
    return fruit;
@@ -31,6 +33,7 @@ public class Watermelon extends Fruit {
   
   void split(){
   }
+  
   void splatter(){
   }
 }

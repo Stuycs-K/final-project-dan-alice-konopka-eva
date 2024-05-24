@@ -2,26 +2,34 @@ public class Lemon extends Fruit {
   PImage fruit;
   int xLocation;
   int yLocation;
+  boolean belowScreen;
+  
+  public Lemon(){
+    fruit = loadImage("lemon.png");
+  }
   
   int getXloc(){
-  return xLocation;
+    return xLocation;
   }
   
-   int getYloc(){
-  return yLocation;
+  int getYloc(){
+    return yLocation;
   }
-   void setXloc(int num){
-  xLocation=num;
+  void setXloc(int num){
+    xLocation=num;
   }
   
   void setYloc(int num){
-  yLocation=num;
+    yLocation=num;
   }
-  public Lemon(){
-  fruit = loadImage("lemon.png");
+  
+  String getName(){
+    return "lemon.png";
   }
+  
   void split(){
   }
+  
   void splatter(){
   }
 }
