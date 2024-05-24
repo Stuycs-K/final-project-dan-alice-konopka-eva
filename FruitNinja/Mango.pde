@@ -2,26 +2,34 @@ public class Mango extends Fruit {
   PImage fruit;
   int xLocation;
   int yLocation;
+  boolean belowScreen;
+  
+  public Mango(){
+    fruit = loadImage("mango.png");
+  }
   
   int getXloc(){
-  return xLocation;
+    return xLocation;
   }
   
-   int getYloc(){
-  return yLocation;
+  int getYloc(){
+    return yLocation;
   }
-   void setXloc(int num){
-  xLocation=num;
+  void setXloc(int num){
+    xLocation=num;
   }
   
   void setYloc(int num){
-  yLocation=num;
+    yLocation=num;
   }
-  public Mango(){
-  fruit = loadImage("mango.png");
+  
+  String getName(){
+    return "mango.png";
   }
+  
   void split(){
   }
+  
   void splatter(){
   }
 }
