@@ -6,6 +6,7 @@ public class UFO {
   int y;
   int xSpeed;
   int ySpeed;
+  float G = 1; 
 
   public UFO() {
     mass = 50;
@@ -44,20 +45,23 @@ public class UFO {
   }
   
   
-  attractTo(UFO earth){
-    PVector earthPosition = new PVector(0, 0);
+ PVector attractTo(UFO earth){
+    PVector earthPosition = earth.position;
     float distance = PVector.dist(position, earthPosition);
     distance = max(15.0, distance);
-    float mag = (float)((G*this.mass*other.mass)/(distance*distance));
-    PVector force = PVector.sub(other.position, this.position);
+    float mag = (G * this.mass * earth.mass) / (distance * distance);
+    PVector force = PVector.sub(earthPosition, this.position);
     force.normalize();
     force.mult(mag);
     return force;
   }
   
- void move(){
-  apply(attractTo(earth));
- }
+  void move(UFO earth) {
+    apply(attractTo(earth));
+    velocity.add(acceleration);
+    position.add(velocity);
+    acceleration.mult(0);
+  }
 
   
 }
