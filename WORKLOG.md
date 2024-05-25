@@ -4,11 +4,16 @@
 
 ### 05/22/24
 
-Added basic method and field names into all class according to the prototype, started setup and draw.
+In class: Added basic method and field names into all class according to the prototype, started setup and draw.
 
 ### 05/23/24
 
-Uploaded images, started with basic methods "skeleton"
+In class: Uploaded images, started with basic methods "skeleton"
+
+### 05/23/24
+
+(had AP Calc exam)
+At home: debugged UFO physics (specifically attractto and move) so that it makes more sense with the game
 
 
 ## GROUP MEMBER 2 - Eva
