@@ -18,6 +18,6 @@ Uploaded images, started with basic methods "skeleton"
 In class: I made an arraylist to make the watermelon show up and displayed it successfully.
 At home: Randomized which fruit is generated, added correct image files, and made the fruits move in keyPressed() by changing the x and y values with new methods. 
 
-### date y
+### 5/24/24
 
-info
+In class: I updated the image files to have better resolution and began writing the physics simulation, based on Orb lab. Might switch to a new calculation based on projectile motion though. 
