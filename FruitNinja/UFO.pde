@@ -26,16 +26,18 @@ public class UFO {
   }
    
   int getXloc(){
-    return 100;
+    return (int) position.x;
   }
   
   int getYloc(){
-    return 100;
+    return (int) position.y;
   }
   void setXloc(int num){
+    position.x = num;
   }
   
   void setYloc(int num){
+     position.y = num;
   }
   
   void gravCalc(){
@@ -45,23 +47,23 @@ public class UFO {
   }
   
   
- PVector attractTo(UFO earth){
-    PVector earthPosition = earth.position;
-    float distance = PVector.dist(position, earthPosition);
+ PVector attractTo(PVector target){
+    float distance = PVector.dist(position, target);
     distance = max(15.0, distance);
-    float mag = (G * this.mass * earth.mass) / (distance * distance);
-    PVector force = PVector.sub(earthPosition, this.position);
+    float mag = (G * this.mass * 1) / (distance * distance);
+    PVector force = PVector.sub(target, this.position);
     force.normalize();
     force.mult(mag);
     return force;
   }
   
-  void move(UFO earth) {
-    apply(attractTo(earth));
+  void move(PVector target) {
+    apply(attractTo(target));
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.mult(0);
   }
+
 
   
 }
