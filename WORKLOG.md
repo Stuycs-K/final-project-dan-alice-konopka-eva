@@ -10,10 +10,14 @@ In class: Added basic method and field names into all class according to the pro
 
 In class: Uploaded images, started with basic methods "skeleton"
 
-### 05/23/24
+### 05/24/24
 
 (had AP Calc exam)
 At home: debugged UFO physics (specifically attractto and move) so that it makes more sense with the game
+
+### 5/25/24
+
+Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
 
 
 ## GROUP MEMBER 2 - Eva

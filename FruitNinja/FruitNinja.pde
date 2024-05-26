@@ -41,8 +41,8 @@ void keyPressed(){
   move(itemList.get(0));
 } 
   
- void move(UFO item){
-   item.move();
+ void move(UFO item,PVector target){
+   item.move(target);
  }
   
   void mouseDragged(){
@@ -59,8 +59,9 @@ void keyPressed(){
   
   void draw(){
     background(#904A30);
-    UFO currentIt = itemList.get(0);
-    currentIt.move();
-    PImage fruit = loadImage(currentIt.getName());
-    image(fruit, currentIt .getXloc(), currentIt.getYloc());
+    for (UFO currentIt : itemList) {
+      currentIt.move(new PVector(width / 2, height / 2));
+    PImage fruit = loadImage(currentIt.getName() + ".png");
+    image(fruit, currentIt.getXloc(), currentIt.getYloc());
+  }
   }
