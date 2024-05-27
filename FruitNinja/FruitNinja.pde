@@ -81,10 +81,19 @@ void keyPressed(){
     time += 0.1;
     UFO currentIt = itemList.get(0);
     currentIt.move(time);
+    currentIt.rotate(0.05);
+    if (currentIt.getY() > height) {
+      animate = false;
+      time = 0;
+    }
   }
   for (UFO currentIt : itemList) {
-    PImage fruit = loadImage(currentIt.getName());
-    image(fruit, currentIt.getX(), currentIt.getY());
-  
-}
+    PImage fruit = loadImage(currentIt.getName() + ".png");
+    pushMatrix();
+    translate(currentIt.getX(), currentIt.getY());
+    rotate(currentIt.getRotationAngle());
+    imageMode(CENTER);
+    image(fruit, 0, 0);
+    popMatrix();
+  }
 }
