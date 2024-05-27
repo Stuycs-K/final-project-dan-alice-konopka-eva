@@ -88,7 +88,7 @@ void keyPressed(){
     }
   }
   for (UFO currentIt : itemList) {
-    PImage fruit = loadImage(currentIt.getName() + ".png");
+    PImage fruit = loadImage(currentIt.getName());
     pushMatrix();
     translate(currentIt.getX(), currentIt.getY());
     rotate(currentIt.getRotationAngle());
