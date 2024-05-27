@@ -19,7 +19,7 @@ At home: debugged UFO physics (specifically attractto and move) so that it makes
 
 Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
 
-### 05/25/24
+### 05/26/24
 
 Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
 
