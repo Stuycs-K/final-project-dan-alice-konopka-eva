@@ -1,4 +1,4 @@
-  float score;
+ float score;
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
   String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
@@ -38,12 +38,15 @@
   }
 
 void keyPressed(){
-  move(itemList.get(0));
+  //move(itemList.get(0));
+ // for (int i =0; i<=100;i++){
+   // itemList.get(0).move(i);
+  //}
 } 
   
- void move(UFO item){
-    item.setXloc(item.getXloc()+40);
-    item.setYloc(item.getYloc()+40);
+ void move(UFO item,PVector target){
+//   item.move(target);
+ //  item.move();
  }
   
   void mouseDragged(){
@@ -60,6 +63,10 @@ void keyPressed(){
   
   void draw(){
     background(#904A30);
-    PImage fruit = loadImage(itemList.get(0).getName());
-    image(fruit,itemList.get(0).getXloc(), itemList.get(0).getYloc());
+  for (UFO currentIt : itemList) {
+    
+    currentIt.move(6);
+    PImage fruit = loadImage(currentIt.getName());
+    image(fruit, currentIt.getX(), currentIt.getY());
+  }
   }
