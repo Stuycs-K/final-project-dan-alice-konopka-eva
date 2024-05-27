@@ -15,9 +15,13 @@ In class: Uploaded images, started with basic methods "skeleton"
 (had AP Calc exam)
 At home: debugged UFO physics (specifically attractto and move) so that it makes more sense with the game
 
-### 5/25/24
+### 05/25/24
 
 Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
+
+### 05/26/24
+
+Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
 
 
 ## GROUP MEMBER 2 - Eva
