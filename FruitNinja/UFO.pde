@@ -2,42 +2,58 @@ public class UFO {
   float mass;
   boolean belowScreen;
   PVector position, velocity, acceleration;
-  int x;
-  int y;
+  float x;
+  float y;
+  float yinit;
   int xSpeed;
   int ySpeed;
-  float G = 1; 
+  float G = 9.81;
+  int initialspeed;
+  float anglestart;
 
   public UFO() {
     mass = 50;
     belowScreen = false;
-    x = 50;
-    y = 40;
+    x = width/2-50;
+    y = height-150;
+    yinit = 150;
     xSpeed = 40;
     ySpeed = 40;
     position = new PVector(x, y);
     velocity = new PVector(xSpeed, ySpeed);
     acceleration = new PVector(0, 0);
-    
+    initialspeed=90;
+    anglestart=radians(90);
+  }
+  
+  void xcalculation(float time){
+    float initialxcomponent = initialspeed* cos(anglestart);
+    setX(x+initialxcomponent * time);
+  }
+  void ycalculation(float time){
+    float initialycomponent = initialspeed * sin(anglestart);
+    float deltay = initialycomponent * time - (0.5*G*time*time) + yinit;
+    setY((height-deltay));
   }
   
   String getName(){
      return "";
   }
    
-  int getXloc(){
-    return (int) position.x;
+  float getX(){
+    return x;
   }
   
-  int getYloc(){
-    return (int) position.y;
-  }
-  void setXloc(int num){
-    position.x = num;
+  float getY(){
+    return y;
   }
   
-  void setYloc(int num){
-     position.y = num;
+  void setX(float num){
+    x = num;
+  }
+  
+  void setY(float num){
+     y = num;
   }
   
   void gravCalc(){
@@ -57,13 +73,19 @@ public class UFO {
     return force;
   }
   
+/*
   void move(PVector target) {
     apply(attractTo(target));
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.mult(0);
   }
+  */
 
+void move(float num){
+    ycalculation(num);
+    xcalculation(num);
+}
 
   
 }

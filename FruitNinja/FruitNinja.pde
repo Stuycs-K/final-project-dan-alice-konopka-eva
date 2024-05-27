@@ -1,7 +1,9 @@
-  float score;
+ float score;
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
   String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
+  boolean animate;
+  float time;
  
   void setup(){
     size(1000,600);
@@ -38,11 +40,16 @@
   }
 
 void keyPressed(){
-  move(itemList.get(0));
+  //move(itemList.get(0));
+ // for (int i =0; i<=100;i++){
+   // itemList.get(0).move(i);
+  //}
+  animate = true;
 } 
   
  void move(UFO item,PVector target){
-   item.move(target);
+//   item.move(target);
+ //  item.move();
  }
   
   void mouseDragged(){
@@ -57,11 +64,36 @@ void keyPressed(){
   void replay(){
   }
   
-  void draw(){
+  void draw() {
     background(#904A30);
+    /*
     for (UFO currentIt : itemList) {
-      currentIt.move(new PVector(width / 2, height / 2));
+        for (int i = 1; i <= 100; i++) {
+            float timeIncrement = i * 0.1; 
+            currentIt.move(timeIncrement);
+            PImage fruit = loadImage(currentIt.getName());
+            image(fruit, currentIt.getX(), currentIt.getY());
+            delay(50); 
+        }
+    }
+    */
+  if (animate) {
+    time += 0.1;
+    UFO currentIt = itemList.get(0);
+    currentIt.move(time);
+    currentIt.rotate(0.05);
+    if (currentIt.getY() > height) {
+      animate = false;
+      time = 0;
+    }
+  }
+  for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName() + ".png");
-    image(fruit, currentIt.getXloc(), currentIt.getYloc());
+    pushMatrix();
+    translate(currentIt.getX(), currentIt.getY());
+    rotate(currentIt.getRotationAngle());
+    imageMode(CENTER);
+    image(fruit, 0, 0);
+    popMatrix();
   }
-  }
+}
