@@ -30,3 +30,6 @@ At home: Randomized which fruit is generated, added correct image files, and mad
 ### 5/24/24
 
 In class: I updated the image files to have better resolution and began writing the physics simulation, based on Orb lab. Might switch to a new calculation based on projectile motion though. 
+
+5/26/24
+At home: designed and implemented a simpler approach to the physics: projectile motion. 
