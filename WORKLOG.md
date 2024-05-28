@@ -45,3 +45,6 @@ In class: I updated the image files to have better resolution and began writing 
 
 5/26/24
 At home: designed and implemented a simpler approach to the physics: projectile motion. 
+
+5/28/24
+worked on splatter in class

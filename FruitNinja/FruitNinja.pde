@@ -57,7 +57,7 @@ void keyPressed(){
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
-        currentIt.splatter(mouseX, mouseY);
+        currentIt.setSplatter();
       } else {
         endGame();
       }
@@ -112,6 +112,8 @@ void keyPressed(){
     rotate(currentIt.getRotationAngle());
     imageMode(CENTER);
     image(fruit, 0, 0);
+    if(currentIt.getSplatter()){
+      currentIt.splatter(100,100);}
     popMatrix();
   }
 }
