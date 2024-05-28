@@ -57,6 +57,7 @@ void keyPressed(){
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
+        currentIt.splatter(mouseX, mouseY);
       } else {
         endGame();
       }
