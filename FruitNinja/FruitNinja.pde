@@ -51,12 +51,11 @@ void keyPressed(){
   
   
   void mouseDragged(){
-      for (int i = itemList.size()-1; i >= 0; i--) {
+   for (int i = itemList.size()-1; i >= 0; i--) {
     UFO currentIt = itemList.get(i);
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
-
       } else {
         endGame();
       }
@@ -79,7 +78,7 @@ void keyPressed(){
   
   void draw() {
     background(#904A30);
-            text(score, 10, 10);
+    text(score, 10, 10);
     /*
     for (UFO currentIt : itemList) {
     for (int i = 1; i <= 100; i++) {
