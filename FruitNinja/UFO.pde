@@ -15,7 +15,7 @@ public class UFO {
   public UFO() {
     mass = 50;
     belowScreen = false;
-    x = width/2-50;
+    x = random(0,width);
     y = height-150;
     yinit = 150;
     xSpeed = 40;
