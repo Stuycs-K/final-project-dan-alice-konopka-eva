@@ -39,6 +39,7 @@
   
   void endGame(){
       System.out.println("Game Over! Final Score: " + (int)score);
+      noLoop();
   }
 
 void keyPressed(){
@@ -74,6 +75,8 @@ void keyPressed(){
   void replay(){
    itemList.clear();
   setup();
+ // loop();
+ noLoop();
   }
   
   void draw() {
