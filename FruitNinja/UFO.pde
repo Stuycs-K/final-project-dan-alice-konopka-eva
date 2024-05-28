@@ -8,8 +8,9 @@ public class UFO {
   int xSpeed;
   int ySpeed;
   float G = 9.81;
-  int initialspeed;
+  float initialspeed;
   float anglestart;
+  float rotationAngle;
 
   public UFO() {
     mass = 50;
@@ -22,8 +23,9 @@ public class UFO {
     position = new PVector(x, y);
     velocity = new PVector(xSpeed, ySpeed);
     acceleration = new PVector(0, 0);
-    initialspeed=90;
+    initialspeed = random(70, 110);
     anglestart=radians(90);
+    rotationAngle = 0;
   }
   
   void xcalculation(float time){
@@ -47,6 +49,7 @@ public class UFO {
   float getY(){
     return y;
   }
+  
   void setX(float num){
     x = num;
   }
@@ -55,8 +58,7 @@ public class UFO {
      y = num;
   }
   
-  void gravCalc(){
-  }
+
   void apply(PVector f){
      acceleration.add(PVector.div(f, mass));
   }
@@ -81,10 +83,17 @@ public class UFO {
   }
   */
 
-void move(float num){
-    ycalculation(num);
-    xcalculation(num);
+void move(float time){
+    ycalculation(time);
+    xcalculation(time);
 }
 
+  void rotate(float angle) {
+    rotationAngle += angle;
+  }
+  
+  float getRotationAngle() {
+    return rotationAngle;
+  }
   
 }

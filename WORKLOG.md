@@ -4,11 +4,28 @@
 
 ### 05/22/24
 
-Added basic method and field names into all class according to the prototype, started setup and draw.
+In class: Added basic method and field names into all class according to the prototype, started setup and draw.
 
 ### 05/23/24
 
-Uploaded images, started with basic methods "skeleton"
+In class: Uploaded images, started with basic methods "skeleton"
+
+### 05/24/24
+
+(had AP Calc exam)
+At home: debugged UFO physics (specifically attractto and move) so that it makes more sense with the game
+
+### 05/25/24
+
+Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
+
+### 05/26/24
+
+Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
+
+### 5/27/24
+
+Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
 
 
 ## GROUP MEMBER 2 - Eva
@@ -18,6 +35,9 @@ Uploaded images, started with basic methods "skeleton"
 In class: I made an arraylist to make the watermelon show up and displayed it successfully.
 At home: Randomized which fruit is generated, added correct image files, and made the fruits move in keyPressed() by changing the x and y values with new methods. 
 
-### date y
+### 5/24/24
 
-info
+In class: I updated the image files to have better resolution and began writing the physics simulation, based on Orb lab. Might switch to a new calculation based on projectile motion though. 
+
+5/26/24
+At home: designed and implemented a simpler approach to the physics: projectile motion. 

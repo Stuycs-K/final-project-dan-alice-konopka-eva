@@ -37,6 +37,7 @@
   }
   
   void endGame(){
+      System.out.println("Game Over! Final Score: " + score);
   }
 
 void keyPressed(){
@@ -53,6 +54,17 @@ void keyPressed(){
  }
   
   void mouseDragged(){
+      for (int i = itemList.size() - 1; i >= 0; i--) {
+    UFO currentIt = itemList.get(i);
+    if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
+      if (!currentIt.getName().equals("bomb")) {
+        score++;
+      } else {
+        endGame();
+      }
+      itemList.remove(i);
+    }
+  }
   }
   
   void mousePressed(){
@@ -62,29 +74,40 @@ void keyPressed(){
   }
   
   void replay(){
+   itemList.clear();
+  setup();
   }
   
   void draw() {
     background(#904A30);
     /*
     for (UFO currentIt : itemList) {
-        for (int i = 1; i <= 100; i++) {
-            float timeIncrement = i * 0.1; 
-            currentIt.move(timeIncrement);
-            PImage fruit = loadImage(currentIt.getName());
-            image(fruit, currentIt.getX(), currentIt.getY());
-            delay(50); 
-        }
-    }
+    for (int i = 1; i <= 100; i++) {
+     float timeIncrement = i * 0.1; 
+      currentIt.move(timeIncrement);
+      PImage fruit = loadImage(currentIt.getName());
+      image(fruit, currentIt.getX(), currentIt.getY());
+      delay(50); 
+     }
+   }
     */
   if (animate) {
     time += 0.1;
     UFO currentIt = itemList.get(0);
     currentIt.move(time);
+    currentIt.rotate(0.05);
+    if (currentIt.getY() > height) {
+      animate = false;
+      time = 0;
+    }
   }
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
-    image(fruit, currentIt.getX(), currentIt.getY());
-  
-}
+    pushMatrix();
+    translate(currentIt.getX(), currentIt.getY());
+    rotate(currentIt.getRotationAngle());
+    imageMode(CENTER);
+    image(fruit, 0, 0);
+    popMatrix();
+  }
 }
