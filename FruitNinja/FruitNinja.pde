@@ -48,21 +48,19 @@ void keyPressed(){
   animate = true;
 } 
   
- void move(UFO item,PVector target){
-//   item.move(target);
- //  item.move();
- }
   
   void mouseDragged(){
-      for (int i = itemList.size() - 1; i >= 0; i--) {
+      for (int i = itemList.size()-1; i >= 0; i--) {
     UFO currentIt = itemList.get(i);
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
-      if (!currentIt.getName().equals("bomb")) {
+      if (!currentIt.getName().equals("bomb.png")) {
         score++;
+        text(score, 10, 10);
       } else {
         endGame();
       }
       itemList.remove(i);
+      animate=false;
     }
   }
   }
