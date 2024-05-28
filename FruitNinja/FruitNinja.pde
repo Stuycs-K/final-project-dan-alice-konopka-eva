@@ -39,6 +39,7 @@
   
   void endGame(){
       System.out.println("Game Over! Final Score: " + (int)score);
+      noLoop();
   }
 
 void keyPressed(){
@@ -75,10 +76,13 @@ void keyPressed(){
   void replay(){
    itemList.clear();
   setup();
+ // loop();
+ noLoop();
   }
   
   void draw() {
     background(#904A30);
+    fill(255);
     text((int)score, 10, 10);
     /*
     for (UFO currentIt : itemList) {
