@@ -38,7 +38,7 @@
   }
   
   void endGame(){
-      System.out.println("Game Over! Final Score: " + score);
+      System.out.println("Game Over! Final Score: " + (int)score);
   }
 
 void keyPressed(){
@@ -78,7 +78,7 @@ void keyPressed(){
   
   void draw() {
     background(#904A30);
-    text(score, 10, 10);
+    text((int)score, 10, 10);
     /*
     for (UFO currentIt : itemList) {
     for (int i = 1; i <= 100; i++) {

@@ -16,7 +16,7 @@ public class UFO {
     mass = 50;
     belowScreen = false;
     x = random(0,width);
-    y = height-150;
+     y = height-150;
     yinit = 150;
     xSpeed = 40;
     ySpeed = 40;
@@ -25,7 +25,7 @@ public class UFO {
     acceleration = new PVector(0, 0);
     initialspeed = random(70, 110);
     anglestart=radians(90);
-    rotationAngle = random(0,90);
+    rotationAngle = 0;
   }
   
   void xcalculation(float time){
