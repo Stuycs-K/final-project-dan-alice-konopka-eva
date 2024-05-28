@@ -60,8 +60,8 @@ public class UFO {
   void setY(float num){
      y = num;
   }
-void splatter(int x, int y){
-    fill(00);
+void splatter(){
+    fill(0);
     text("splat", getX()+100, getY());
     circle(getX(), getY(), 100);
   }
