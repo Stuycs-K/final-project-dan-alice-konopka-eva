@@ -3,6 +3,7 @@
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
   String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
+  ArrayList<PVector> splatterList = new ArrayList<PVector>();
   boolean animate;
   float time;
  
@@ -43,10 +44,6 @@
   }
 
 void keyPressed(){
-  //move(itemList.get(0));
- // for (int i =0; i<=100;i++){
-   // itemList.get(0).move(i);
-  //}
   animate = true;
 } 
   
@@ -58,6 +55,7 @@ void keyPressed(){
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         currentIt.setSplatter();
+        splatterList.add(new PVector(currentIt.getX(), currentIt.getY()));
       } else {
         endGame();
       }
@@ -84,17 +82,11 @@ void keyPressed(){
     background(#904A30);
     fill(255);
     text((int)score, 10, 10);
-    /*
-    for (UFO currentIt : itemList) {
-    for (int i = 1; i <= 100; i++) {
-     float timeIncrement = i * 0.1; 
-      currentIt.move(timeIncrement);
-      PImage fruit = loadImage(currentIt.getName());
-      image(fruit, currentIt.getX(), currentIt.getY());
-      delay(50); 
-     }
-   }
-    */
+    for (PVector splatter : splatterList) {
+      fill(0); 
+      ellipse(splatter.x, splatter.y, 100, 100);
+  }
+
   if (animate) {
     time += 0.1;
     UFO currentIt = itemList.get(0);
@@ -112,8 +104,6 @@ void keyPressed(){
     rotate(currentIt.getRotationAngle());
     imageMode(CENTER);
     image(fruit, 0, 0);
-    if(currentIt.getSplatter()){
-      currentIt.splatter(100,100);}
     popMatrix();
   }
 }
