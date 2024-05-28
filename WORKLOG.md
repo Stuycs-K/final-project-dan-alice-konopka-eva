@@ -25,7 +25,11 @@ Added rotational motion to the UFO class so that fruits rotate as they move, inc
 
 ### 5/27/24
 
-Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
+Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)\
+
+### 5/28/24
+
+Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
 
 
 ## GROUP MEMBER 2 - Eva
