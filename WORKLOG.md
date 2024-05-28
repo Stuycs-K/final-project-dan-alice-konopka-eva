@@ -23,6 +23,10 @@ Fixed up setup method; also changed up the approach for physics methods in UFO, 
 
 Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
 
+### 5/27/24
+
+Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
+
 
 ## GROUP MEMBER 2 - Eva
 
