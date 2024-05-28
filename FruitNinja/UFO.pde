@@ -8,7 +8,7 @@ public class UFO {
   int xSpeed;
   int ySpeed;
   float G = 9.81;
-  int initialspeed;
+  float initialspeed;
   float anglestart;
   float rotationAngle;
 
@@ -23,7 +23,7 @@ public class UFO {
     position = new PVector(x, y);
     velocity = new PVector(xSpeed, ySpeed);
     acceleration = new PVector(0, 0);
-    initialspeed=90;
+    initialspeed = random(70, 110);
     anglestart=radians(90);
     rotationAngle = 0;
   }
