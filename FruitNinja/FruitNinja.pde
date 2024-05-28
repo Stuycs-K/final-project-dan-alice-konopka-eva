@@ -1,3 +1,4 @@
+
  float score;
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
@@ -37,7 +38,8 @@
   }
   
   void endGame(){
-      System.out.println("Game Over! Final Score: " + score);
+      System.out.println("Game Over! Final Score: " + (int)score);
+      noLoop();
   }
 
 void keyPressed(){
@@ -55,7 +57,7 @@ void keyPressed(){
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
-        currentIt.splatter(mouseX, mouseY);
+        currentIt.setSplatter();
       } else {
         endGame();
       }
@@ -74,11 +76,14 @@ void keyPressed(){
   void replay(){
    itemList.clear();
   setup();
+ // loop();
+ noLoop();
   }
   
   void draw() {
     background(#904A30);
-    text(score, 10, 10);
+    fill(255);
+    text((int)score, 10, 10);
     /*
     for (UFO currentIt : itemList) {
     for (int i = 1; i <= 100; i++) {
@@ -107,6 +112,8 @@ void keyPressed(){
     rotate(currentIt.getRotationAngle());
     imageMode(CENTER);
     image(fruit, 0, 0);
+    if(currentIt.getSplatter()){
+      currentIt.splatter(100,100);}
     popMatrix();
   }
 }
