@@ -1,3 +1,4 @@
+
  float score;
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
@@ -55,6 +56,7 @@ void keyPressed(){
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
+
       } else {
         endGame();
       }
@@ -77,6 +79,7 @@ void keyPressed(){
   
   void draw() {
     background(#904A30);
+            text(score, 10, 10);
     /*
     for (UFO currentIt : itemList) {
     for (int i = 1; i <= 100; i++) {
