@@ -51,8 +51,9 @@ public class UFO {
      y = num;
   }
   
-void splatter(float x, float y){
+void splatter(float x, float y, color c){
     noStroke();
+    color(c);
     circle(x,y,50);
     circle(x+15,y+25,20);
     circle(x+15,y+(20-45),10);
