@@ -11,7 +11,6 @@ public class UFO {
   float initialspeed;
   float anglestart;
   float rotationAngle;
-  boolean splatter;
 
   public UFO() {
     mass = 50;
@@ -28,7 +27,6 @@ public class UFO {
     anglestart=radians(90);
     rotationAngle = random(0,90);
     rotationAngle = 0;
-    splatter =false;
   }
   
   void xcalculation(float time){
@@ -61,9 +59,12 @@ public class UFO {
      y = num;
   }
 void splatter(float x, float y){
-    fill(0);
-    text("splat", x, y);
-    circle(x, y, 100);
+    noStroke();
+    circle(x,y,50);
+    circle(x+15,y+25,20);
+    circle(x+15,y+(20-45),10);
+    circle(x+45,y-5,16);
+    rect(x+20,y-10,27,10);
   }
   void apply(PVector f){
      acceleration.add(PVector.div(f, mass));
@@ -100,14 +101,6 @@ void move(float time){
   
   float getRotationAngle() {
     return rotationAngle;
-  }
-  
-  boolean getSplatter(){
-  return splatter;
-  }
-  
-   void setSplatter(){
-   splatter=true;
   }
   
 }
