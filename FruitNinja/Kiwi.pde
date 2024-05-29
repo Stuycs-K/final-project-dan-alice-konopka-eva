@@ -30,6 +30,10 @@ public class Kiwi extends Fruit {
   void split(){
   }
   
-  void splatter(){
+  void splatter(float x, float y){
+    
+    fill(100);
+    text("splat", x, y);
+    circle(x, y, 100);
   }
 }

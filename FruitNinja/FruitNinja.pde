@@ -1,5 +1,5 @@
 
- float score;
+  float score;
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
   String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
