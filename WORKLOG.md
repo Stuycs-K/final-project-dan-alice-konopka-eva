@@ -49,3 +49,6 @@ At home: designed and implemented a simpler approach to the physics: projectile 
 ### 5/28/24
 In class: worked on splatter in class, tried to use a boolean to display it.
 At home: implemented basic correct default splatter! decided to use an arraylist to store PVectors instead
+
+### 5/29/24
+In class: got more correct splatter to work, utilizing the classes instead of doing it in main.
