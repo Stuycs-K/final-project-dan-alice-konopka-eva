@@ -1,12 +1,9 @@
 public class UFO {
   float mass;
   boolean belowScreen;
-  PVector position, velocity, acceleration;
   float x;
   float y;
   float yinit;
-  int xSpeed;
-  int ySpeed;
   float G = 9.81;
   float initialspeed;
   float anglestart;
@@ -18,11 +15,6 @@ public class UFO {
     x = random(0,width);
     y = height-150;
     yinit = 150;
-    xSpeed = 40;
-    ySpeed = 40;
-    position = new PVector(x, y);
-    velocity = new PVector(xSpeed, ySpeed);
-    acceleration = new PVector(0, 0);
     initialspeed = random(70, 110);
     anglestart=radians(90);
     rotationAngle = random(0,90);
@@ -58,6 +50,7 @@ public class UFO {
   void setY(float num){
      y = num;
   }
+  
 void splatter(float x, float y){
     noStroke();
     circle(x,y,50);
@@ -66,29 +59,6 @@ void splatter(float x, float y){
     circle(x+45,y-5,16);
     rect(x+20,y-10,27,10);
   }
-  void apply(PVector f){
-     acceleration.add(PVector.div(f, mass));
-  }
-  
-  
- PVector attractTo(PVector target){
-    float distance = PVector.dist(position, target);
-    distance = max(15.0, distance);
-    float mag = (G * this.mass * 1) / (distance * distance);
-    PVector force = PVector.sub(target, this.position);
-    force.normalize();
-    force.mult(mag);
-    return force;
-  }
-  
-/*
-  void move(PVector target) {
-    apply(attractTo(target));
-    velocity.add(acceleration);
-    position.add(velocity);
-    acceleration.mult(0);
-  }
-  */
 
 void move(float time){
     ycalculation(time);
