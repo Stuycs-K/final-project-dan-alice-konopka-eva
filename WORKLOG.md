@@ -31,6 +31,9 @@ Made fruits start at a randomized speed, and made adjustments so that the score 
 
 Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
 
+## 5/29/24
+
+Worked on a splatter shape for the fruits, and worked on making splatter a compatible method with all fruits, depending on the color.
 
 ## GROUP MEMBER 2 - Eva
 
