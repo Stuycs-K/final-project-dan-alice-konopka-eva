@@ -43,8 +43,9 @@ At home: Randomized which fruit is generated, added correct image files, and mad
 
 In class: I updated the image files to have better resolution and began writing the physics simulation, based on Orb lab. Might switch to a new calculation based on projectile motion though. 
 
-5/26/24
+### 5/26/24
 At home: designed and implemented a simpler approach to the physics: projectile motion. 
 
-5/28/24
-worked on splatter in class
+### 5/28/24
+In class: worked on splatter in class, tried to use a boolean to display it.
+At home: implemented basic correct default splatter! decided to use an arraylist to store PVectors instead
