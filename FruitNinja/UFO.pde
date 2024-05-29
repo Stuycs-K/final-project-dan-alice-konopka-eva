@@ -50,7 +50,7 @@ public class UFO {
   void setY(float num){
      y = num;
   }
-  
+
 void splatter(float x, float y, color c){
     noStroke();
     color(c);
