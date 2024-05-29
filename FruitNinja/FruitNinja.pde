@@ -3,9 +3,9 @@
   float missedFruits;
   ArrayList<UFO> itemList = new ArrayList<UFO>();
   String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
-  ArrayList<PVector> splatterList = new ArrayList<PVector>();
   boolean animate;
   float time;
+  ArrayList<UFO> removedItems = new ArrayList<UFO>();
  
   void setup(){
     size(1000,600);
@@ -54,8 +54,7 @@ void keyPressed(){
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
-        currentIt.setSplatter();
-        splatterList.add(new PVector(currentIt.getX(), currentIt.getY()));
+        removedItems.add(currentIt);
       } else {
         endGame();
       }
@@ -82,9 +81,8 @@ void keyPressed(){
     background(#904A30);
     fill(255);
     text((int)score, 10, 10);
-    for (PVector splatter : splatterList) {
-      fill(0); 
-      ellipse(splatter.x, splatter.y, 100, 100);
+    for (UFO splatterIt : removedItems) {
+      splatterIt.splatter(splatterIt.getX(), splatterIt.getY());
   }
 
   if (animate) {

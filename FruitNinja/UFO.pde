@@ -60,10 +60,10 @@ public class UFO {
   void setY(float num){
      y = num;
   }
-void splatter(){
+void splatter(float x, float y){
     fill(0);
-    text("splat", getX()+100, getY());
-    circle(getX(), getY(), 100);
+    text("splat", x, y);
+    circle(x, y, 100);
   }
   void apply(PVector f){
      acceleration.add(PVector.div(f, mass));
