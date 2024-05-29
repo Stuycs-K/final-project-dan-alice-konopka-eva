@@ -31,7 +31,7 @@ public class Banana extends Fruit {
   }
   
   void splatter(){
-    color(#F5E900);
-    splatter(this.getXloc(),this.getYloc());
+    //color(#F5E900);
+    splatter(this.getXloc(),this.getYloc(),#F5E900);
   }
 }

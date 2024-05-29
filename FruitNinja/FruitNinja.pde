@@ -82,7 +82,7 @@ void keyPressed(){
     fill(255);
     text((int)score, 10, 10);
     for (UFO splatterIt : removedItems) {
-      splatterIt.splatter(splatterIt.getX(), splatterIt.getY());
+      splatterIt.splatter(splatterIt.getX(), splatterIt.getY());//placeholder for fruit color? maybe getSplatterColor method
   }
 
   if (animate) {

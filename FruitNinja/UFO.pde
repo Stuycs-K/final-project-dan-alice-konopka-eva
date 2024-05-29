@@ -50,8 +50,15 @@ public class UFO {
   void setY(float num){
      y = num;
   }
-  
-void splatter(float x, float y){
+
+void splatter(float x, float y, color c){
+    noStroke();
+    color(c);
+    circle(x,y,50);
+    circle(x+15,y+25,20);
+    circle(x+15,y+(20-45),10);
+    circle(x+45,y-5,16);
+    rect(x+20,y-10,27,10);
   }
 
 void move(float time){
