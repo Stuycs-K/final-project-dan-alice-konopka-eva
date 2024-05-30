@@ -1,25 +1,25 @@
 public class Bomb extends UFO{
   PImage bombImage;
-  int xLocation;
-  int yLocation;
+  float xLocation;
+  float yLocation;
   boolean belowScreen;
   
   public Bomb(){
     bombImage = loadImage("bomb.png");
   }
   
-  int getXloc(){
+  float getX(){
     return xLocation;
   }
   
-  int getYloc(){
+  float getY(){
     return yLocation;
   }
-  void setXloc(int num){
+  void setX(float num){
     xLocation=num;
   }
   
-  void setYloc(int num){
+  void setY(float num){
     yLocation=num;
   }
   
