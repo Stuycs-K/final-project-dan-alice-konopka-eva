@@ -31,13 +31,9 @@ Made fruits start at a randomized speed, and made adjustments so that the score 
 
 Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
 
-### 5/29/24
+## 5/29/24
 
 Worked on a splatter shape for the fruits, and worked on making splatter a compatible method with all fruits, depending on the color.
-
-### 5/30/24
-
-Worked on the split method, managed to make it a basic function through cropping (no gravitational force yet), fixed minor bugs with inheritance
 
 ## GROUP MEMBER 2 - Eva
 
@@ -60,3 +56,6 @@ At home: implemented basic correct default splatter! decided to use an arraylist
 ### 5/29/24
 In class: got more correct splatter to work, utilizing the classes instead of doing it in main.
 At home: Finished splatter and added a different colored one to each class. 
+
+### 5/30/24
+In class: Made fruits randomly generate and move. Don't use keypressed anymore, just generates immediately.
