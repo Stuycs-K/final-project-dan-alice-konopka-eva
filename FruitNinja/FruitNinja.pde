@@ -7,9 +7,19 @@ boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
 
+int lastFruitTime = 0; 
+int nextFruitInterval = 0;
+
 void setup() {
   size(1000, 600);
+  generateRanFruit();
+  lastFruitTime = millis(); 
+  nextFruitInterval = (int)(Math.random()*10000); 
+}
+
+void generateRanFruit(){
   int random = (int)(Math.random() * 9);
+
   UFO randomFruit = new Watermelon();
   if (random == 0) {
     randomFruit = new Banana();
@@ -39,7 +49,10 @@ void setup() {
     randomFruit = new Lemon();
   }
   itemList.add(randomFruit);
+ lastFruitTime = millis(); 
+  nextFruitInterval = (int)(Math.random()*10000); 
 }
+
 
 void endGame() {
   System.out.println("Game Over! Final Score: " + (int)score);
@@ -84,21 +97,24 @@ void draw() {
   background(#904A30);
   fill(255);
   text((int)score, 10, 10);
+  
+  int currentTime = millis();
+  if (currentTime - lastFruitTime >= nextFruitInterval) {
+    generateRanFruit();
+  }
   for (UFO splatterIt : removedItems) {
-    splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));//placeholder for fruit color? maybe getSplatterColor method
+    splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
     
   }
-
-  if (animate) {
+for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;
-    UFO currentIt = itemList.get(0);
+    UFO currentIt = itemList.get(i);
     currentIt.move(time);
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
-      animate = false;
       time = 0;
     }
-  }
+}
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
     pushMatrix();
