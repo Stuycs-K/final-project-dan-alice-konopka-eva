@@ -2,14 +2,14 @@
 float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
-String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon"};
+String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
 
 void setup() {
   size(1000, 600);
-  int random = (int)(Math.random() * 8);
+  int random = (int)(Math.random() * 9);
   UFO randomFruit = new Watermelon();
   if (random == 0) {
     randomFruit = new Banana();
@@ -34,6 +34,9 @@ void setup() {
   }
   if (random == 7) {
     randomFruit = new Watermelon();
+  }
+  if (random == 8) {
+    randomFruit = new Lemon();
   }
   itemList.add(randomFruit);
 }
