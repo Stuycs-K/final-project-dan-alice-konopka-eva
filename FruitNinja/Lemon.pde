@@ -30,6 +30,8 @@ public class Lemon extends Fruit {
   void split(){
   }
   
-  void splatter(){
+  @Override
+  void splatter(float x, float y, color c){
+    super.splatter(x,y,color(#fff300));
   }
 }

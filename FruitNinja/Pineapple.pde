@@ -24,12 +24,14 @@ public class Pineapple extends Fruit {
   }
   
   String getName(){
-    return "peach.png";
+    return "pineapple.png";
   }
   
   void split(){
   }
   
-  void splatter(){
+   @Override
+  void splatter(float x, float y, color c){
+    super.splatter(x,y,color(#4cf822));
   }
 }

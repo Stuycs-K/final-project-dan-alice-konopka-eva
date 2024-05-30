@@ -30,8 +30,8 @@ public class Banana extends Fruit {
   void split(){
   }
   
-  void splatter(){
-    //color(#F5E900);
-    splatter(this.getXloc(),this.getYloc(),#F5E900);
+   @Override
+  void splatter(float x, float y, color c){
+    super.splatter(x,y,color(#efe621));
   }
 }
