@@ -55,3 +55,4 @@ At home: implemented basic correct default splatter! decided to use an arraylist
 
 ### 5/29/24
 In class: got more correct splatter to work, utilizing the classes instead of doing it in main.
+At home: Finished splatter and added a different colored one to each class. 
