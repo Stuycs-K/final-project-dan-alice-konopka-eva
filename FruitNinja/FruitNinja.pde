@@ -105,6 +105,7 @@ void draw() {
   }
   for (UFO splatterIt : removedItems) {
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
+    splatterIt.split(splatterIt.getX(),splatterIt.getY());
   }
 for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;
