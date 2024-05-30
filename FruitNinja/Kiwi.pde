@@ -31,12 +31,9 @@ public class Kiwi extends Fruit {
   
   void split(){
   }
-   void setSplatterColor(color c) {
-    splatterColor = c;
-  }
     @Override
   void splatter(float x, float y, color c){
-    super.splatter(x, y, splatterColor);
+    super.splatter(x,y,color(#68c51a));
   }
   
 }
