@@ -12,7 +12,7 @@ public class Fruit extends UFO {
     circle(x + 45 * scaleBy, y - 5 * scaleBy, 16 * scaleBy);
     rect(x + 20 * scaleBy, y - 10 * scaleBy, 27 * scaleBy, 10 * scaleBy);
   }
-  void splitFruit(float x, float y) {
+  void split(float x, float y) {
   }
 
 }
