@@ -31,6 +31,9 @@ Made fruits start at a randomized speed, and made adjustments so that the score 
 
 Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
 
+## 5/29/24
+
+Worked on a splatter shape for the fruits, and worked on making splatter a compatible method with all fruits, depending on the color.
 
 ## GROUP MEMBER 2 - Eva
 
@@ -43,5 +46,13 @@ At home: Randomized which fruit is generated, added correct image files, and mad
 
 In class: I updated the image files to have better resolution and began writing the physics simulation, based on Orb lab. Might switch to a new calculation based on projectile motion though. 
 
-5/26/24
+### 5/26/24
 At home: designed and implemented a simpler approach to the physics: projectile motion. 
+
+### 5/28/24
+In class: worked on splatter in class, tried to use a boolean to display it.
+At home: implemented basic correct default splatter! decided to use an arraylist to store PVectors instead
+
+### 5/29/24
+In class: got more correct splatter to work, utilizing the classes instead of doing it in main.
+At home: Finished splatter and added a different colored one to each class. 

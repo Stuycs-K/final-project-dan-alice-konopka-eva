@@ -1,25 +1,25 @@
 public class Banana extends Fruit {
   PImage fruit;
-  int xLocation;
-  int yLocation;
+  float xLocation;
+  float yLocation;
   boolean belowScreen;
   
   public Banana(){
     fruit = loadImage("pineapple.png");
   }
   
-  int getXloc(){
+  float getXloc(){
     return xLocation;
   }
   
-  int getYloc(){
+  float getYloc(){
     return yLocation;
   }
-  void setXloc(int num){
+  void setXloc(float num){
     xLocation=num;
   }
   
-  void setYloc(int num){
+  void setYloc(float num){
     yLocation=num;
   }
   
@@ -30,6 +30,8 @@ public class Banana extends Fruit {
   void split(){
   }
   
-  void splatter(){
+   @Override
+  void splatter(float x, float y, color c){
+    super.splatter(x,y,color(#efe621));
   }
 }
