@@ -39,7 +39,7 @@ public class Kiwi extends Fruit {
     PImage[]segments = new PImage[2];
     segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
     segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
-    image(segments[1],x+50,y);
+    image(segments[1],x+80,y);
     image(segments[0],x,y);
   }
   
