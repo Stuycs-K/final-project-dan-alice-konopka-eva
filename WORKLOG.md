@@ -39,6 +39,11 @@ Worked on a splatter shape for the fruits, and worked on making splatter a compa
 
 Worked on the split method, managed to make it a basic function through cropping (no gravitational force yet), fixed minor bugs with inheritance
 
+### 5/31/24
+
+Worked on the visibility of split, tried doing gravitational attraction when the fruits are splitted but it didn't work (i.e. returning PImage array for split that both slices can have gravitational force on)
+
+
 ## GROUP MEMBER 2 - Eva
 
 ### 5/23/24
