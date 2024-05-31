@@ -1,3 +1,4 @@
+
 float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
@@ -104,7 +105,7 @@ void draw() {
   }
   for (UFO splatterIt : removedItems) {
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
-    PImage[]segs = splatterIt.split(splatterIt.getX(),splatterIt.getY());
+    splatterIt.split(splatterIt.getX(),splatterIt.getY());
   }
 for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;
@@ -115,14 +116,6 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
       time = 0;
     }
 }
-/*for (int i = segs.length-1;i>=0;i--){
-  time +=0.1;
-  UFO currentIt = segments.get(i);
-  currentIt.move(time);
-  currentIt.rotate(0.05);
-  if (currentIt.y()>height){
-    time = 0;
-  } will make splits fall whne it works*/
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
     pushMatrix();
@@ -132,5 +125,4 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
     image(fruit, 0, 0);
     popMatrix();
   }
-}
 }

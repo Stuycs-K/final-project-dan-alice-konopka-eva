@@ -53,8 +53,7 @@ public class UFO {
 
 void splatter(float x, float y, color c){
   }
-PImage[] split(float x, float y){
-  return new PImage[2];
+void split(float x, float y){
 }
 
 void move(float time){
