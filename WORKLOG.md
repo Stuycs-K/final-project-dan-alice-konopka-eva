@@ -2,30 +2,30 @@
 
 ## GROUP MEMBER 1 - Alice
 
-### 05/22/24
+### 5/22/24
 
 In class: Added basic method and field names into all class according to the prototype, started setup and draw.
 
-### 05/23/24
+### 5/23/24
 
 In class: Uploaded images, started with basic methods "skeleton"
 
-### 05/24/24
+### 5/24/24
 
 (had AP Calc exam)
 At home: debugged UFO physics (specifically attractto and move) so that it makes more sense with the game
 
-### 05/25/24
+### 5/25/24
 
 Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
 
-### 05/26/24
+### 5/26/24
 
 Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
 
 ### 5/27/24
 
-Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)\
+Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
 
 ### 5/28/24
 
@@ -56,3 +56,6 @@ At home: implemented basic correct default splatter! decided to use an arraylist
 ### 5/29/24
 In class: got more correct splatter to work, utilizing the classes instead of doing it in main.
 At home: Finished splatter and added a different colored one to each class. 
+
+### 5/30/24
+In class: Made fruits randomly generate and move. Don't use keypressed anymore, just generates immediately.

@@ -24,10 +24,10 @@ void generateRanFruit(){
   if (random == 0) {
     randomFruit = new Banana();
   }
-  if (random == 1) {
-    randomFruit = new Bomb();
-  }
-  if (random == 2) {
+  //if (random == 1) {
+  //  randomFruit = new Bomb();
+ // }
+  if (random == 2||random==1) {//remove the 1 part later - this is just for MVP/demo
     randomFruit = new Coconut();
   }
   if (random == 3) {
@@ -71,6 +71,7 @@ void mouseDragged() {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
+        //currentIt.split(currentIt.getXloc(),currentIt.getYloc());
       } else {
         endGame();
       }
@@ -104,7 +105,7 @@ void draw() {
   }
   for (UFO splatterIt : removedItems) {
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
-    
+    splatterIt.split(splatterIt.getX(),splatterIt.getY());
   }
 for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;

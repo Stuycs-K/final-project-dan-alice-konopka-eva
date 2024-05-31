@@ -5,7 +5,7 @@ public class Banana extends Fruit {
   boolean belowScreen;
   
   public Banana(){
-    fruit = loadImage("pineapple.png");
+    fruit = loadImage("banana.png");
   }
   
   float getXloc(){
@@ -27,7 +27,12 @@ public class Banana extends Fruit {
     return "banana.png";
   }
  
-  void split(){
+    void split(float x, float y){
+    PImage[]segments = new PImage[2];
+    segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
+    segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
+    image(segments[1],x,y);
+    image(segments[0],x,y);
   }
   
    @Override

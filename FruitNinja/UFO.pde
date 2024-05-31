@@ -53,6 +53,8 @@ public class UFO {
 
 void splatter(float x, float y, color c){
   }
+void split(float x, float y){
+}
 
 void move(float time){
     ycalculation(time);
