@@ -35,6 +35,7 @@ public class Lemon extends Fruit {
     super.splatter(x,y,color(#fff300));
   }
     void split(float x, float y){
+   //   rotate(radians(random(0,90)));
     PImage[]segments = new PImage[2];
     segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
     segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
