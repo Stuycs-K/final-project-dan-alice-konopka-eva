@@ -36,6 +36,6 @@ public class Pineapple extends Fruit {
     super.splatter(x,y,color(#4cf822));
   }
 void split(float x, float y){
-    super.split(x,y);
+    super.split(x,y, getName());
   }
 }

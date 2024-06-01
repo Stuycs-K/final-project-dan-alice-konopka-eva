@@ -37,6 +37,6 @@ public class Lemon extends Fruit {
   }
 
 void split(float x, float y){
-    super.split(x,y);
+    super.split(x,y, getName());
   }
 }

@@ -31,7 +31,7 @@ public class Kiwi extends Fruit {
   }
   
 void split(float x, float y){
-    super.split(x,y);
+    super.split(x,y, getName());
   }
     @Override
   void splatter(float x, float y, color c){

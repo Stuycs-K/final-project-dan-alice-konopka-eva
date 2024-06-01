@@ -52,7 +52,7 @@ void generateRanFruit(){
   }
   itemList.add(randomFruit);
  lastFruitTime = millis(); 
-  nextFruitInterval = (int)(Math.random()*5000); 
+  nextFruitInterval = (int)(Math.random()*10000); 
 }
 
 
@@ -67,18 +67,18 @@ void keyPressed() {
 
 
 void mouseDragged() {
-  for (int i = itemList.size() - 1; i >= 0; i--) {
+  for (int i = itemList.size()-1; i >= 0; i--) {
     UFO currentIt = itemList.get(i);
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
-        currentIt.split(currentIt.getX(), currentIt.getY());
+        //currentIt.split(currentIt.getXloc(),currentIt.getYloc());
       } else {
         endGame();
       }
       itemList.remove(i);
-      animate = false;
+      animate=false;
     }
   }
 }
@@ -109,20 +109,17 @@ void draw() {
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
     splatterIt.split(splatterIt.getX(),splatterIt.getY());
   }
-  for (int i = itemList.size() - 1; i >= 0; i--) {
+for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;
     UFO currentIt = itemList.get(i);
     currentIt.move(time);
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
       time = 0;
-      itemList.remove(i);
-      missedFruits++;  
-      if (missedFruits >= 3) {
-      endGame();
-      }
-    }
+      itemList.remove(i);  
   }
+}
+
   for (int i = halfList.size() - 1; i >= 0; i--) {
     UFO currentHalf = halfList.get(i);
     time += 0.1;
@@ -131,9 +128,9 @@ void draw() {
       halfList.remove(i);
     }
   }
-  for (UFO currentIt : halfList) {
+     for (UFO currentIt : halfList) {
     PImage fruit = loadImage(currentIt.getName());
-    pushMatrix();
+     pushMatrix();
     PImage half = fruit;
     if(currentIt.getHalf().equals("left")){
       half = fruit.get(0, 0, fruit.width / 2, fruit.height);
