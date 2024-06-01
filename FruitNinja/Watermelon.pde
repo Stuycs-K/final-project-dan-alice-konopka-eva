@@ -6,7 +6,9 @@ public class Watermelon extends Fruit {
   boolean isSplit = false;
   
   public Watermelon(){
+    super();
     fruit = loadImage("watermelon.png");
+    this.setY(height+100000);
   }
   
   String getName(){

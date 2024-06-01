@@ -6,7 +6,9 @@ public class Lemon extends Fruit {
   boolean isSplit = false;
   
   public Lemon(){
+    super();
     fruit = loadImage("lemon.png");
+    this.setY(height+100000);
   }
   
   int getXloc(){

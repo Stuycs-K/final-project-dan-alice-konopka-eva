@@ -1,3 +1,6 @@
+ArrayList<Float> recentXPositions = new ArrayList<Float>();
+float minDistance = 50;
+int maxRecentPositions = 5; 
 
 float score;
 float missedFruits;
@@ -50,14 +53,33 @@ void generateRanFruit(){
   if (random == 8) {
     randomFruit = new Lemon();
   }
+  float newX;
+  boolean validPosition;
+  do {
+    newX = random(0, width);
+    validPosition = true;
+    for (float x : recentXPositions) {
+      if (abs(newX - x) < minDistance) {
+        validPosition = false;
+        break;
+      }
+    }
+  } while (!validPosition);
+  randomFruit.setX(newX);
+  randomFruit.setY(height + 10000);
   itemList.add(randomFruit);
- lastFruitTime = millis(); 
-  nextFruitInterval = (int)(Math.random()*10000); 
+  recentXPositions.add(newX);
+  if (recentXPositions.size() > maxRecentPositions) {
+    recentXPositions.remove(0);
+  }
+  lastFruitTime = millis();
+  nextFruitInterval = (int)(Math.random() * 5000);
 }
 
 
 void endGame() {
   System.out.println("Game Over! Final Score: " + (int)score);
+  text("Game Over! Final Score: "+(int)score, width/2, height/2);
   noLoop();
 }
 
@@ -100,16 +122,17 @@ void draw() {
   background(#904A30);
   fill(255);
   text((int)score, 10, 10);
-
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
     generateRanFruit();
   }
-
-  for (UFO splatterIt : removedItems) {
+  for (int i = removedItems.size() - 1; i >= 0; i--) {
+    UFO splatterIt = removedItems.get(i);
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
     splatterIt.updateSplatter();
-    splatterIt.split(splatterIt.getX(), splatterIt.getY());
+    if (splatterIt instanceof Fruit && ((Fruit) splatterIt).alpha <= 0) {
+      removedItems.remove(i); 
+    }
   }
 
   for (int i = itemList.size() - 1; i >= 0; i--) {
