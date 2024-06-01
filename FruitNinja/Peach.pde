@@ -36,6 +36,6 @@ public class Peach extends Fruit {
     super.splatter(x,y,color(#ff6800));
   }
 void split(float x, float y){
-    super.split(x,y, getName());
+    super.split(x,y);
   }
 }
