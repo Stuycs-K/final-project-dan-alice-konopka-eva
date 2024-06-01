@@ -43,6 +43,9 @@ Worked on the split method, managed to make it a basic function through cropping
 
 Worked on the visibility of split, tried doing gravitational attraction when the fruits are splitted but it didn't work (i.e. returning PImage array for split that both slices can have gravitational force on)
 
+### 6/1/24
+
+Made game end after 3 fruits missed, made splatters fade out, fixed some small visual bugs, fixed a bug where fruits spawn in the wrong place in certain cases
 
 ## GROUP MEMBER 2 - Eva
 
