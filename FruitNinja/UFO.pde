@@ -9,30 +9,33 @@ public class UFO {
   float anglestart;
   float rotationAngle;
 
-  public UFO() {
-    mass = 50;
-    belowScreen = false;
-    x = random(0,width);
-    y = height-150;
-    yinit = 150;
-    initialspeed = random(70, 110);
-    anglestart=radians(90);
-    rotationAngle = random(0,90);
-    rotationAngle = 0;
-  }
-  
-  public UFO(float xint, float yint) {
-    mass = 50;
-    belowScreen = false;
-    x = xint;
-    y = yint;
-    yinit = yint;
-    initialspeed = random(70, 110);
-    anglestart=radians(90);
-    rotationAngle = random(0,90);
-    rotationAngle = 0;
-  }
-  
+public UFO() {
+  mass = 50;
+  belowScreen = false;
+  x = random(0, width);
+  y = height + 50; // Spawns below the screen
+  yinit = height + 50; // Initialize the same as y
+  initialspeed = random(70, 110);
+  anglestart = radians(90);
+  rotationAngle = random(0, 90);
+  rotationAngle = 0;
+}
+
+public UFO(float xint, float yint) {
+  mass = 50;
+  belowScreen = false;
+  x = xint;
+  y = yint;
+  yinit = yint;
+  initialspeed = random(70, 110);
+  anglestart = radians(90);
+  rotationAngle = random(0, 90);
+  rotationAngle = 0;
+}
+
+  void setInitialSpeed(float speed) {
+  initialspeed = speed;
+}
   boolean isHalf(){
   return false;}
   void xcalculation(float time){

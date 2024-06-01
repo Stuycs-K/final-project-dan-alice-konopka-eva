@@ -52,7 +52,7 @@ void generateRanFruit(){
   }
   itemList.add(randomFruit);
  lastFruitTime = millis(); 
-  nextFruitInterval = (int)(Math.random()*10000); 
+  nextFruitInterval = (int)(Math.random()*5000); 
 }
 
 

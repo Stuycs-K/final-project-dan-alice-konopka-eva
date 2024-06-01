@@ -18,17 +18,18 @@ public class Fruit extends UFO {
     return "";
   }
   
-   void split(float x, float y, String name){
-   fruit = loadImage(name);
+@Override
+void split(float x, float y, String name) {
+  fruit = loadImage(name);
   if (!isSplit) {
-    UFO left = new Half(x-10, y, name, "left");  
+    UFO left = new Half(x - 10, y, name, "left");
+    UFO right = new Half(x + fruit.width / 2 + 10, y, name, "right");
+    left.setInitialSpeed(0); // Set initial speed to zero
+    right.setInitialSpeed(0); // Set initial speed to zero
     halfList.add(left);
-    UFO right = new Half(x + fruit.width / 2+10, y, name, "right");  
     halfList.add(right);
     isSplit = true;
   }
-  }
-
-
+}
 
 }
