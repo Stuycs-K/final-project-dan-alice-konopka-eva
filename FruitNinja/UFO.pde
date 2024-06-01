@@ -21,6 +21,20 @@ public class UFO {
     rotationAngle = 0;
   }
   
+  public UFO(float xint, float yint) {
+    mass = 50;
+    belowScreen = false;
+    x = xint;
+    y = yint;
+    yinit = yint;
+    initialspeed = random(70, 110);
+    anglestart=radians(90);
+    rotationAngle = random(0,90);
+    rotationAngle = 0;
+  }
+  
+  boolean isHalf(){
+  return false;}
   void xcalculation(float time){
     float initialxcomponent = initialspeed* cos(anglestart);
     setX(x+initialxcomponent * time);

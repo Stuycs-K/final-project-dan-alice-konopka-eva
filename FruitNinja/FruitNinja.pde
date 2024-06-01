@@ -2,6 +2,8 @@
 float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
+ArrayList<UFO> halfList = new ArrayList<UFO>();
+
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -22,7 +24,7 @@ void generateRanFruit(){
 
   UFO randomFruit = new Watermelon();
   if (random == 0) {
-    randomFruit = new Banana();
+    randomFruit = new Coconut();//Banana();
   }
   //if (random == 1) {
   //  randomFruit = new Bomb();
@@ -31,22 +33,22 @@ void generateRanFruit(){
     randomFruit = new Coconut();
   }
   if (random == 3) {
-    randomFruit = new Kiwi();
+    randomFruit = new Coconut();//Kiwi();
   }
   if (random == 4) {
-    randomFruit = new Mango();
+    randomFruit = new Coconut();//Mango();
   }
   if (random == 5) {
-    randomFruit = new Peach();
+    randomFruit = new Coconut();//Peach();
   }
   if (random == 6) {
-    randomFruit = new Pineapple();
+    randomFruit = new Coconut();//Pineapple();
   }
   if (random == 7) {
-    randomFruit = new Watermelon();
+    randomFruit = new Coconut();//Watermelon();
   }
   if (random == 8) {
-    randomFruit = new Lemon();
+    randomFruit = new Coconut();//Lemon();
   }
   itemList.add(randomFruit);
  lastFruitTime = millis(); 
@@ -114,8 +116,25 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
       time = 0;
-    }
+      itemList.remove(i);  
+  }
 }
+
+  for (int i = halfList.size() - 1; i >= 0; i--) {
+    UFO currentHalf = halfList.get(i);
+    time += 0.1;
+    currentHalf.move(time);
+    if (currentHalf.getY() > height) {
+      halfList.remove(i);
+    }
+  }
+     for (UFO currentIt : halfList) {
+    PImage fruit = loadImage(currentIt.getName());
+    pushMatrix();
+    imageMode(CENTER);
+    image(fruit, currentIt.getX(), currentIt.getY());
+    popMatrix();
+  }
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
     pushMatrix();
