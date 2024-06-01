@@ -87,5 +87,6 @@ void move(float time){
   float getRotationAngle() {
     return rotationAngle;
   }
-  
+  void updateSplatter(){
+  }
 }
