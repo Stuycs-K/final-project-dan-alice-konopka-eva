@@ -32,7 +32,9 @@ public class UFO {
     rotationAngle = random(0,90);
     rotationAngle = 0;
   }
-  
+  void setInitialSpeed(float speed) {
+  initialspeed = speed;
+}
   boolean isHalf(){
   return false;}
   void xcalculation(float time){
