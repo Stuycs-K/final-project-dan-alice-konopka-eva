@@ -12,6 +12,8 @@ public class Half extends UFO {
     this.whichHalf = whichHalf;
     this.xLocation = x;
     this.yLocation = y;
+    this.initialspeed = 50; // Adjust initial speed if necessary
+    this.anglestart = radians(random(70, 110)); // Adjust angle if necessary
   }
 
   @Override
@@ -45,6 +47,5 @@ public class Half extends UFO {
   }
 
   @Override
-  void splatter(float x, float y, color c) {
-  }
+  void splatter(float x, float y, color c) {}
 }
