@@ -12,14 +12,15 @@ public class UFO {
   public UFO() {
     mass = 50;
     belowScreen = false;
-    x = random(0, width);
-    y = height + 50; // Spawns below the screen
-    yinit = height + 50; // Initialize the same as y
+    x = random(0,width);
+    y = height-150;
+    yinit = 150;
     initialspeed = random(70, 110);
-    anglestart = radians(270); // Angle to move upwards
-    rotationAngle = random(0, 90);
+    anglestart=radians(90);
+    rotationAngle = random(0,90);
+    rotationAngle = 0;
   }
-
+  
   public UFO(float xint, float yint) {
     mass = 50;
     belowScreen = false;
@@ -27,65 +28,62 @@ public class UFO {
     y = yint;
     yinit = yint;
     initialspeed = random(70, 110);
-    anglestart = radians(270); // Angle to move upwards
-    rotationAngle = random(0, 90);
+    anglestart=radians(90);
+    rotationAngle = random(0,90);
+    rotationAngle = 0;
   }
-
-  void xcalculation(float time) {
-    float initialxcomponent = initialspeed * cos(anglestart);
-    setX(x + initialxcomponent * time);
+  
+  boolean isHalf(){
+  return false;}
+  void xcalculation(float time){
+    float initialxcomponent = initialspeed* cos(anglestart);
+    setX(x+initialxcomponent * time);
   }
-
-  void ycalculation(float time) {
+  void ycalculation(float time){
     float initialycomponent = initialspeed * sin(anglestart);
-    float deltay = initialycomponent * time - (0.5 * G * time * time) + yinit;
-    setY(deltay); // Just set deltay as y
+    float deltay = initialycomponent * time - (0.5*G*time*time) + yinit;
+    setY((height-deltay));
   }
-
-  String getName() {
-    return "";
+  
+  String getName(){
+     return "";
   }
-
-  float getX() {
+   
+  float getX(){
     return x;
   }
-
-  float getY() {
+  
+  float getY(){
     return y;
   }
-
-  void setX(float num) {
+  
+  void setX(float num){
     x = num;
   }
-
-  void setY(float num) {
-    y = num;
+  
+  void setY(float num){
+     y = num;
   }
 
-  void splatter(float x, float y, color c) {
+void splatter(float x, float y, color c){
   }
+void split(float x, float y){
+}
+String getHalf(){
+return "";
+}
 
-  void split(float x, float y) {
-  }
-
-  String getHalf() {
-    return "";
-  }
-
-  void move(float time) {
+void move(float time){
     ycalculation(time);
     xcalculation(time);
-  }
+}
 
   void rotate(float angle) {
     rotationAngle += angle;
   }
-
+  
   float getRotationAngle() {
     return rotationAngle;
   }
-
-  void setInitialSpeed(float speed) {
-    initialspeed = speed;
-  }
+  
 }
