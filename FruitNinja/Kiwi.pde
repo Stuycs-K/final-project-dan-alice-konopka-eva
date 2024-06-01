@@ -7,7 +7,9 @@ public class Kiwi extends Fruit {
    boolean isSplit = false;
   
   public Kiwi(){
+    super();
     fruit = loadImage("kiwi.png");
+    this.setY(height+100000);
      splatterColor = color(255,0, 0); 
   }
   
