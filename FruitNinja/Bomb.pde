@@ -1,11 +1,14 @@
-public class Bomb extends UFO{
+/*public class Bomb extends UFO{
   PImage bombImage;
   float xLocation;
   float yLocation;
   boolean belowScreen;
   
-  public Bomb(){
+  public Bomb(float xint, float yint){
     bombImage = loadImage("bomb.png");
+    xLocation = (float)(Math.random()*width);
+     yLocation = 0;
+     belowScreen = false;
   }
   
   float getX(){
@@ -30,3 +33,4 @@ public class Bomb extends UFO{
     return "bomb.png";
   }
 }
+*/

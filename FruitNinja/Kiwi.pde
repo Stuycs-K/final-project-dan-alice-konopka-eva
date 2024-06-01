@@ -4,6 +4,7 @@ public class Kiwi extends Fruit {
   int yLocation;
   boolean belowScreen;
    color splatterColor;
+   boolean isSplit = false;
   
   public Kiwi(){
     fruit = loadImage("kiwi.png");
@@ -29,18 +30,11 @@ public class Kiwi extends Fruit {
     return "kiwi.png";
   }
   
-  void split(){
+void split(float x, float y){
+    super.split(x,y, getName());
   }
     @Override
   void splatter(float x, float y, color c){
     super.splatter(x,y,color(#68c51a));
   }
-    void split(float x, float y){
-    PImage[]segments = new PImage[2];
-    segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
-    segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
-    image(segments[1],x+80,y);
-    image(segments[0],x,y);
-  }
-  
 }
