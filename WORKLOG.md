@@ -68,3 +68,9 @@ At home: Finished splatter and added a different colored one to each class.
 
 ### 5/30/24
 In class: Made fruits randomly generate and move. Don't use keypressed anymore, just generates immediately.
+
+### 5/31/24
+In class: No progress made. Struggled with split.
+
+### 6/1/24
+At home: Created new class, Half, and made split work correctly, with physics applied to each half of the fruit. 

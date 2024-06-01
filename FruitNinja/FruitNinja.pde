@@ -2,6 +2,8 @@
 float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
+ArrayList<UFO> halfList = new ArrayList<UFO>();
+
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -114,8 +116,33 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
       time = 0;
-    }
+      itemList.remove(i);  
+  }
 }
+
+  for (int i = halfList.size() - 1; i >= 0; i--) {
+    UFO currentHalf = halfList.get(i);
+    time += 0.1;
+    currentHalf.move(time);
+    if (currentHalf.getY() > height) {
+      halfList.remove(i);
+    }
+  }
+     for (UFO currentIt : halfList) {
+    PImage fruit = loadImage(currentIt.getName());
+     pushMatrix();
+    PImage half = fruit;
+    if(currentIt.getHalf().equals("left")){
+      half = fruit.get(0, 0, fruit.width / 2, fruit.height);
+    }
+    if(currentIt.getHalf().equals("right")){
+      half = fruit.get(fruit.width / 2, 0, fruit.width / 2, fruit.height);
+    }
+    imageMode(CENTER);
+    image(half, currentIt.getX(), currentIt.getY());
+    popMatrix();
+  }
+  
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
     pushMatrix();

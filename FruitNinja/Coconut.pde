@@ -3,6 +3,7 @@ public class Coconut extends Fruit {
   int xLocation;
   int yLocation;
   boolean belowScreen;
+  boolean isSplit = false;
   
   public Coconut(){
     fruit = loadImage("coconut.png");
@@ -23,6 +24,7 @@ public class Coconut extends Fruit {
     yLocation=num;
   }
   
+  @Override
   String getName(){
     return "coconut.png";
   }
@@ -35,10 +37,15 @@ public class Coconut extends Fruit {
     super.splatter(x,y,color(#fceddf));
   }
     void split(float x, float y){
+      /*
     PImage[]segments = new PImage[2];
     segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
     segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
     image(segments[1],x+120,y);
     image(segments[0],x,y);
-  }
+    */
+   
+  super.split(x,y, getName());
+}
+
 }

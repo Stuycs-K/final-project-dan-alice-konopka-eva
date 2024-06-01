@@ -3,6 +3,7 @@ public class Pineapple extends Fruit {
   int xLocation;
   int yLocation;
   boolean belowScreen;
+  boolean isSplit = false;
   
   public Pineapple(){
     fruit = loadImage("pineapple.png");
@@ -34,11 +35,7 @@ public class Pineapple extends Fruit {
   void splatter(float x, float y, color c){
     super.splatter(x,y,color(#4cf822));
   }
-    void split(float x, float y){
-    PImage[]segments = new PImage[2];
-    segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
-    segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
-    image(segments[1],x+120,y);
-    image(segments[0],x,y);
+void split(float x, float y){
+    super.split(x,y, getName());
   }
 }
