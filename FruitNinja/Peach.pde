@@ -35,13 +35,7 @@ public class Peach extends Fruit {
   void splatter(float x, float y, color c){
     super.splatter(x,y,color(#ff6800));
   }
-    void split(float x, float y){
-  if (!isSplit) {
-    UFO left = new Half(x-10, y, getName(), "left");  
-    halfList.add(left);
-    UFO right = new Half(x + fruit.width / 2+10, y, getName(), "right");  
-    halfList.add(right);
-    isSplit = true;
+void split(float x, float y){
+    super.split(x,y, getName());
   }
-}
 }

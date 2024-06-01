@@ -24,7 +24,7 @@ void generateRanFruit(){
 
   UFO randomFruit = new Watermelon();
   if (random == 0) {
-    randomFruit = new Coconut();//Banana();
+    randomFruit = new Banana();
   }
   //if (random == 1) {
   //  randomFruit = new Bomb();

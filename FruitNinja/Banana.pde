@@ -35,12 +35,6 @@ public class Banana extends Fruit {
   
   
   void split(float x, float y){
-  if (!isSplit) {
-    UFO left = new Half(x-10, y, getName(), "left");  
-    halfList.add(left);
-    UFO right = new Half(x + fruit.width / 2+10, y, getName(), "right");  
-    halfList.add(right);
-    isSplit = true;
+    super.split(x,y, getName());
   }
-}
 }

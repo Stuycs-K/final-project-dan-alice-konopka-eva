@@ -24,6 +24,7 @@ public class Coconut extends Fruit {
     yLocation=num;
   }
   
+  @Override
   String getName(){
     return "coconut.png";
   }
@@ -44,13 +45,7 @@ public class Coconut extends Fruit {
     image(segments[0],x,y);
     */
    
-  if (!isSplit) {
-    UFO left = new Half(x-10, y, "coconut.png", "left");  
-    halfList.add(left);
-    UFO right = new Half(x + fruit.width / 2+10, y, "coconut.png", "right");  
-    halfList.add(right);
-    isSplit = true;
-  }
+  super.split(x,y, getName());
 }
 
 }
