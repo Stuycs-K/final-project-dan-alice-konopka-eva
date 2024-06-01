@@ -45,9 +45,9 @@ public class Coconut extends Fruit {
     */
    
   if (!isSplit) {
-    UFO left = new Cocoleft(x, y);  // Create the left half at the same position
+    UFO left = new Half(x-10, y, "coconut.png", "left");  
     halfList.add(left);
-    UFO right = new Cocoleft(x + fruit.width / 2, y);  // Adjust the x position for the right half
+    UFO right = new Half(x + fruit.width / 2+10, y, "coconut.png", "right");  
     halfList.add(right);
     isSplit = true;
   }

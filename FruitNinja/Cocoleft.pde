@@ -1,16 +1,20 @@
-public class Cocoleft extends UFO {
+public class Half extends UFO {
   PImage fruit;
   float xLocation;
   float yLocation;
   boolean belowScreen;
+  String name;
+  String whichHalf;
 
-  public Cocoleft(float x, float y) {
+  public Half(float x, float y, String name, String whichHalf) {
     super(x, y);
     fruit = loadImage("pineapple.png");
+    this.name =name;
+    this.whichHalf=whichHalf;
   }
 
-  boolean getHalf() {
-    return true;
+  String getHalf() {
+    return whichHalf;
   }
 
   float getX() {
@@ -30,7 +34,7 @@ public class Cocoleft extends UFO {
   }
 
   String getName() {
-    return "pineapple.png";
+    return name;
   }
 
   void splatter(float x, float y, color c) {

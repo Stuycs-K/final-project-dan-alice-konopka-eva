@@ -33,22 +33,22 @@ void generateRanFruit(){
     randomFruit = new Coconut();
   }
   if (random == 3) {
-    randomFruit = new Coconut();//Kiwi();
+    randomFruit = new Kiwi();
   }
   if (random == 4) {
-    randomFruit = new Coconut();//Mango();
+    randomFruit = new Mango();
   }
   if (random == 5) {
-    randomFruit = new Coconut();//Peach();
+    randomFruit = new Peach();
   }
   if (random == 6) {
-    randomFruit = new Coconut();//Pineapple();
+    randomFruit = new Pineapple();
   }
   if (random == 7) {
-    randomFruit = new Coconut();//Watermelon();
+    randomFruit = new Watermelon();
   }
   if (random == 8) {
-    randomFruit = new Coconut();//Lemon();
+    randomFruit = new Lemon();
   }
   itemList.add(randomFruit);
  lastFruitTime = millis(); 
@@ -130,11 +130,19 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
   }
      for (UFO currentIt : halfList) {
     PImage fruit = loadImage(currentIt.getName());
-    pushMatrix();
+     pushMatrix();
+    PImage half = fruit;
+    if(currentIt.getHalf().equals("left")){
+      half = fruit.get(0, 0, fruit.width / 2, fruit.height);
+    }
+    if(currentIt.getHalf().equals("right")){
+      half = fruit.get(fruit.width / 2, 0, fruit.width / 2, fruit.height);
+    }
     imageMode(CENTER);
-    image(fruit, currentIt.getX(), currentIt.getY());
+    image(half, currentIt.getX(), currentIt.getY());
     popMatrix();
   }
+  
   for (UFO currentIt : itemList) {
     PImage fruit = loadImage(currentIt.getName());
     pushMatrix();

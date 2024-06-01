@@ -69,6 +69,9 @@ void splatter(float x, float y, color c){
   }
 void split(float x, float y){
 }
+String getHalf(){
+return "";
+}
 
 void move(float time){
     ycalculation(time);

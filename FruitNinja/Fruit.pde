@@ -1,5 +1,6 @@
 public class Fruit extends UFO {
-  PImage fruitImage;
+  PImage fruit;
+  boolean isSplit = false;
  
   @Override
   void splatter(float x, float y, color c){
@@ -12,7 +13,16 @@ public class Fruit extends UFO {
     circle(x + 45 * scaleBy, y - 5 * scaleBy, 16 * scaleBy);
     rect(x + 20 * scaleBy, y - 10 * scaleBy, 27 * scaleBy, 10 * scaleBy);
   }
-  void split(float x, float y) {
+   void split(float x, float y){
+  if (!isSplit) {
+    UFO left = new Half(x-10, y, getName(), "left");  
+    halfList.add(left);
+    UFO right = new Half(x + fruit.width / 2+10, y, getName(), "right");  
+    halfList.add(right);
+    isSplit = true;
   }
+  }
+
+
 
 }

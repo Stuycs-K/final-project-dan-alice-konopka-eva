@@ -3,6 +3,7 @@ public class Watermelon extends Fruit {
   int xLocation;
   int yLocation;
   boolean belowScreen;
+  boolean isSplit = false;
   
   public Watermelon(){
     fruit = loadImage("watermelon.png");
@@ -39,10 +40,12 @@ public class Watermelon extends Fruit {
     super.splatter(x,y,color(#ff0065));
   }
     void split(float x, float y){
-    PImage[]segments = new PImage[2];
-    segments[0]=fruit.get((int)getXloc(),(int)getYloc(),(int)fruit.width/2,(int)fruit.height);
-    segments[1]=fruit.get((int)getXloc()+fruit.width/2,(int)getYloc(),(int)fruit.width,(int)fruit.height);
-    image(segments[1],x,y);
-    image(segments[0],x,y);
+  if (!isSplit) {
+    UFO left = new Half(x-10, y, getName(), "left");  
+    halfList.add(left);
+    UFO right = new Half(x + fruit.width / 2+10, y, getName(), "right");  
+    halfList.add(right);
+    isSplit = true;
   }
+}
 }
