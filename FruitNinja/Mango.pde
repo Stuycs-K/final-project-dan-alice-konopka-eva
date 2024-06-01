@@ -36,6 +36,6 @@ public class Mango extends Fruit {
     super.splatter(x,y,color(#ffc34f));
   }
 void split(float x, float y){
-    super.split(x,y, getName());
+    super.split(x,y);
   }
 }

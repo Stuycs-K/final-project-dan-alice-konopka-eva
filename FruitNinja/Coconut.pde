@@ -45,7 +45,7 @@ public class Coconut extends Fruit {
     image(segments[0],x,y);
     */
    
-  super.split(x,y, getName());
+  super.split(x,y);
 }
 
 }
