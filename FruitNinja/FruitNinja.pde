@@ -55,9 +55,9 @@ void generateRanFruit(){
   nextFruitInterval = (int)(Math.random()*10000); 
 }
 
-
 void endGame() {
   System.out.println("Game Over! Final Score: " + (int)score);
+  text("Game Over! Final Score: "+(int)score, width/2, height/2);
   noLoop();
 }
 
@@ -73,7 +73,7 @@ void mouseDragged() {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
-        //currentIt.split(currentIt.getXloc(),currentIt.getYloc());
+        currentIt.split(currentIt.getX(),currentIt.getY());
       } else {
         endGame();
       }
@@ -99,15 +99,20 @@ void replay() {
 void draw() {
   background(#904A30);
   fill(255);
-  text((int)score, 10, 10);
-  
+  text("Score: "+(int)score, 10, 10);
+  text("Missed: "+(int)missedFruits, 10, 20);
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
     generateRanFruit();
   }
-  for (UFO splatterIt : removedItems) {
+  
+  for (int i = removedItems.size() - 1; i >= 0; i--) {
+    UFO splatterIt = removedItems.get(i);
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
-    splatterIt.split(splatterIt.getX(),splatterIt.getY());
+    splatterIt.updateSplatter();
+    if (splatterIt instanceof Fruit && ((Fruit) splatterIt).alpha <= 0) {
+      removedItems.remove(i); 
+    }
   }
 for (int i = itemList.size() - 1; i >= 0; i--) {
     time += 0.1;
@@ -117,6 +122,10 @@ for (int i = itemList.size() - 1; i >= 0; i--) {
     if (currentIt.getY() > height) {
       time = 0;
       itemList.remove(i);  
+      missedFruits++;
+       if (missedFruits >= 3) {
+        endGame();
+      }
   }
 }
 

@@ -1,11 +1,12 @@
 public class Fruit extends UFO {
   PImage fruit;
   boolean isSplit = false;
+  float alpha = 255;
  
   @Override
   void splatter(float x, float y, color c){
     noStroke();
-    fill(c);
+    fill(red(c), green(c), blue(c), alpha); 
     float scaleBy = 2.5;
     circle(x, y, 50 * scaleBy);
     circle(x + 15 * scaleBy, y + 25 * scaleBy, 20 * scaleBy);
@@ -27,8 +28,12 @@ public class Fruit extends UFO {
     halfList.add(right);
     isSplit = true;
   }
+   }
+  
+   void updateSplatter() {
+    if (alpha > 0) {
+      alpha -= 5; // Decrease the alpha value to fade out
+    }
   }
 
-
-
-}
+  }
