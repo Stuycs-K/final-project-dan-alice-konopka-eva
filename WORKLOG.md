@@ -17,23 +17,34 @@ At home: debugged UFO physics (specifically attractto and move) so that it makes
 
 ### 5/25/24
 
-Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
+At home: Fixed up setup method; also changed up the approach for physics methods in UFO, which simplifies the logic
 
 ### 5/26/24
 
-Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
+At home: Added rotational motion to the UFO class so that fruits rotate as they move, including variables and methods. Drawing would also apply rotation.
 
 ### 5/27/24
-
-Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
+At home: Made fruits start at a randomized speed, and made adjustments so that the score would change OR the game ended if the mouse was dragged over certain things (seems a little buggy)
 
 ### 5/28/24
 
-Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
+In class: Made fruits start at a random location, made some adjustments for player convenience/visibility, fixed a bug with endGame() and replay, and made mouseDragged() not end the game due to an error.
 
-## 5/29/24
+### 5/29/24
 
-Worked on a splatter shape for the fruits, and worked on making splatter a compatible method with all fruits, depending on the color.
+In class: Worked on a splatter shape for the fruits, and worked on making splatter a compatible method with all fruits, depending on the color.
+
+### 5/30/24
+
+In class: Worked on the split method, managed to make it a basic function through cropping (no gravitational force yet), fixed minor bugs with inheritance
+
+### 5/31/24
+
+In class: Worked on the visibility of split, tried doing gravitational attraction when the fruits are splitted but it didn't work (i.e. returning PImage array for split that both slices can have gravitational force on)
+
+### 6/1/24
+
+At home: Made game end after 3 fruits missed, made splatters fade out, fixed some small visual bugs, fixed a bug where fruits spawn in the wrong place in certain cases
 
 ## GROUP MEMBER 2 - Eva
 
