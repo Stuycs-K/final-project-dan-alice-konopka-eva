@@ -94,11 +94,8 @@ void mouseDragged() {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
-<<<<<<< HEAD
+
         currentIt.split(currentIt.getX(),currentIt.getY());
-=======
-        currentIt.split(currentIt.getX(), currentIt.getY(), currentIt.getName());
->>>>>>> main
       } else {
         endGame();
       }
@@ -124,20 +121,14 @@ void replay() {
 void draw() {
   background(#904A30);
   fill(255);
-<<<<<<< HEAD
   text("Score: "+(int)score, 10, 10);
   text("Missed: "+(int)missedFruits, 10, 20);
-=======
-  text((int)score, 10, 10);
->>>>>>> main
+
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
     generateRanFruit();
   }
-<<<<<<< HEAD
-  
-=======
->>>>>>> main
+
   for (int i = removedItems.size() - 1; i >= 0; i--) {
     UFO splatterIt = removedItems.get(i);
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
@@ -154,20 +145,12 @@ void draw() {
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
       time = 0;
-<<<<<<< HEAD
-      itemList.remove(i);  
-      missedFruits++;
-       if (missedFruits >= 3) {
-        endGame();
-      }
-=======
       itemList.remove(i);
       missedFruits++;
       if (missedFruits >= 3) {
         endGame();
       }
     }
->>>>>>> main
   }
 
   for (int i = halfList.size() - 1; i >= 0; i--) {

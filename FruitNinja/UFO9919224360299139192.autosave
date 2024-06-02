@@ -20,11 +20,7 @@ public class UFO {
     rotationAngle = random(0, 90);
     rotationAngle = 0;
   }
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> main
   public UFO(float xint, float yint) {
     mass = 50;
     belowScreen = false;
@@ -36,26 +32,13 @@ public class UFO {
     rotationAngle = random(0, 90);
     rotationAngle = 0;
   }
-<<<<<<< HEAD
   
   boolean isHalf(){
   return false;
 }
-  
-  void xcalculation(float time){
-    float initialxcomponent = initialspeed* cos(anglestart);
-    setX(x+initialxcomponent * time);
-  }
-  
-  void ycalculation(float time){
-=======
-
+ 
   void setInitialSpeed(float speed) {
     initialspeed = speed;
-  }
-
-  boolean isHalf() {
-    return false;
   }
 
   void xcalculation(float time) {
@@ -64,7 +47,6 @@ public class UFO {
   }
 
   void ycalculation(float time) {
->>>>>>> main
     float initialycomponent = initialspeed * sin(anglestart);
     float deltay = initialycomponent * time - (0.5 * G * time * time) + yinit;
     setY((height - deltay));
@@ -110,14 +92,8 @@ public class UFO {
   float getRotationAngle() {
     return rotationAngle;
   }
-<<<<<<< HEAD
+  
    void updateSplatter() {
     
   }
-
-=======
-
-  void updateSplatter() {
-  }
->>>>>>> main
 }
