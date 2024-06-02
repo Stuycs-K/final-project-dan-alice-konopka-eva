@@ -45,7 +45,4 @@ public class Half extends UFO {
   String getName() {
     return name;
   }
-
-  @Override
-  void splatter(float x, float y, color c) {}
 }

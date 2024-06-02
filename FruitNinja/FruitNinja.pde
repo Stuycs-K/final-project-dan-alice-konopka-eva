@@ -95,7 +95,7 @@ void mouseDragged() {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
-        //currentIt.split(currentIt.getXloc(),currentIt.getYloc());
+        currentIt.split(currentIt.getX(), currentIt.getY(), currentIt.getName());
       } else {
         endGame();
       }

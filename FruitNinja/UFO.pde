@@ -74,7 +74,7 @@ public class UFO {
 
   void splatter(float x, float y, color c) {}
 
-  void split(float x, float y) {}
+  void split(float x, float y, String name) {}
 
   String getHalf() {
     return "";
