@@ -7,8 +7,7 @@ public class Watermelon extends Fruit {
   
   public Watermelon(){
     super();
-    fruit = loadImage("watermelon.png");
-    this.setY(height+100000);
+   fruit = loadImage("watermelon.png");
   }
   
   String getName(){
@@ -42,16 +41,7 @@ public class Watermelon extends Fruit {
   //  super.split(x,y, getName());
   //}
 
-void split(float x, float y, String name) {
-    fruit = loadImage(getName());
-    if (!isSplit) {
-      UFO left = new Half(x - fruit.width / 4, y, getName(), "left");
-      UFO right = new Half(x + fruit.width / 4, y, getName(), "right");
-      left.setInitialSpeed(50); 
-      right.setInitialSpeed(50);
-      halfList.add(left);
-      halfList.add(right);
-      isSplit = true;
-    }
+void split(float x, float y){
+  super.split(x,y, getName());
   }
 }

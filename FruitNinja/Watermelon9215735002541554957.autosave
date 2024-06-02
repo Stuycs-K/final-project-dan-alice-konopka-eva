@@ -1,12 +1,16 @@
-public class Pineapple extends Fruit {
+public class Watermelon extends Fruit {
   PImage fruit;
   int xLocation;
   int yLocation;
   boolean belowScreen;
   boolean isSplit = false;
  
-  public Pineapple(){
-  fruit = loadImage("pineapple.png");
+  public Watermelon(){
+  fruit = loadImage("watermelon.png");
+  }
+ 
+  String getName(){
+  return "watermelon.png";
   }
  
   int getXloc(){
@@ -24,8 +28,8 @@ public class Pineapple extends Fruit {
   yLocation=num;
   }
  
-  String getName(){
-  return "pineapple.png";
+  PImage display(){
+   return fruit;
   }
  
   void split(){
@@ -33,7 +37,7 @@ public class Pineapple extends Fruit {
  
    @Override
   void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#4cf822));
+  super.splatter(x,y,color(#ff0065));
   }
 void split(float x, float y){
   super.split(x,y, getName());
