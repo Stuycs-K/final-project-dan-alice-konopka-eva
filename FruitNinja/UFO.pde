@@ -1,3 +1,4 @@
+
 public class UFO {
   float x, y;
   float velocityX, velocityY;
@@ -6,9 +7,9 @@ public class UFO {
 
   public UFO() {
     x = random(0, width);
-    y = height - 50;
+    y = height - 50; // Start near the bottom of the screen
     velocityX = random(-2, 2);
-    velocityY = random(-10, -20);
+    velocityY = random(-10, -20); // Initial velocity upwards
     rotationAngle = random(0, TWO_PI);
   }
 
@@ -16,7 +17,7 @@ public class UFO {
     this.x = x;
     this.y = y;
     velocityX = random(-2, 2);
-    velocityY = random(-10, -20);
+    velocityY = random(-10, -20); // Initial velocity upwards
     rotationAngle = random(0, TWO_PI);
   }
 
@@ -25,13 +26,10 @@ public class UFO {
     y += velocityY;
     velocityY += gravity; // Apply gravity to the vertical velocity
 
-    // Bounce off the edges
-    if (x < 0 || x > width) {
-      velocityX *= -1;
-    }
+    // Remove the fruit if it falls off the screen
     if (y > height) {
-      y = height;
-      velocityY *= -0.5; // Reduce speed and reverse direction when hitting the ground
+      y = height + 1; // Move the fruit just out of the visible screen to indicate it's removed
+      velocityY = 0;  // Stop the velocity
     }
   }
 
@@ -55,6 +53,10 @@ public class UFO {
     this.y = y;
   }
 
+  float getRotationAngle() {
+    return rotationAngle;
+  }
+
   String getName() {
     return "";
   }
@@ -68,4 +70,27 @@ public class UFO {
   }
 
   void updateSplatter() {}
+}
+
+public class Banana extends UFO {
+  PImage fruit;
+  boolean isSplit = false;
+
+  public Banana() {
+    super();
+    fruit = loadImage("banana.png");
+  }
+
+  String getName() {
+    return "banana.png";
+  }
+
+  @Override
+  void splatter(float x, float y, color c) {
+    super.splatter(x, y, color(#efe621));
+  }
+
+  void split(float x, float y) {
+    super.split(x, y, getName());
+  }
 }
