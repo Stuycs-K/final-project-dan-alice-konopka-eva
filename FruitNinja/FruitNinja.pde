@@ -15,7 +15,7 @@ void setup() {
   size(1000, 600);
   generateRanFruit();
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000); 
+  nextFruitInterval = (int)(Math.random() * 2000); 
 }
 
 void generateRanFruit() {
@@ -53,12 +53,15 @@ void generateRanFruit() {
 
 void endGame() {
   System.out.println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Final Score: " + (int)score, width / 2, height / 2);
+  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2-30, height / 2);
   noLoop();
 }
 
 void keyPressed() {
   animate = true;
+  if (key == 'e' || key == 'E') {
+    endGame();
+  }
 }
 
 void mouseDragged() {
@@ -112,6 +115,9 @@ void draw() {
       itemList.remove(i);
       missedFruits++;
       if (missedFruits >= 3) {
+          background(#904A30);
+        text("Score: " + (int)score, 10, 10); 
+        text("Missed: " + (int)missedFruits, 10, 20); 
         endGame();
       }
     }
