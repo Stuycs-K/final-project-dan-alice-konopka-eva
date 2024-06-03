@@ -1,59 +1,40 @@
+
 public class UFO {
-  float mass;
-  boolean belowScreen;
-  float x;
-  float y;
-  float yinit;
-  float G = 9.81;
-  float initialspeed;
-  float anglestart;
+  float x, y;
+  float velocityX, velocityY;
+  float gravity = 0.3;
   float rotationAngle;
 
   public UFO() {
-    mass = 50;
-    belowScreen = false;
-    x = random(0, width);
-    y = height - 150;
-    yinit = 150;
-    initialspeed = random(70, 110);
-    anglestart = radians(90);
-    rotationAngle = random(0, 90);
-    rotationAngle = 0;
+    x = random(100, width - 100);
+    y = height - 50; // Start near the bottom of the screen
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
+    rotationAngle = random(0, TWO_PI);
   }
 
-  public UFO(float xint, float yint) {
-    mass = 50;
-    belowScreen = false;
-    x = xint;
-    y = yint;
-    yinit = yint;
-    initialspeed = random(70, 110);
-    anglestart = radians(90);
-    rotationAngle = random(0, 90);
-    rotationAngle = 0;
+  public UFO(float x, float y) {
+    this.x = x;
+    this.y = y;
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
+    rotationAngle = random(0, TWO_PI);
   }
 
-  void setInitialSpeed(float speed) {
-    initialspeed = speed;
+  void move() {
+    x += velocityX;
+    y += velocityY;
+    velocityY += gravity; // Apply gravity to the vertical velocity
+
+    // Remove the fruit if it falls off the screen
+    if (y > height) {
+      y = height + 1; // Move the fruit just out of the visible screen to indicate it's removed
+      velocityY = 0;  // Stop the velocity
+    }
   }
 
-  boolean isHalf() {
-    return false;
-  }
-
-  void xcalculation(float time) {
-    float initialxcomponent = initialspeed * cos(anglestart);
-    setX(x + initialxcomponent * time);
-  }
-
-  void ycalculation(float time) {
-    float initialycomponent = initialspeed * sin(anglestart);
-    float deltay = initialycomponent * time - (0.5 * G * time * time) + yinit;
-    setY((height - deltay));
-  }
-
-  String getName() {
-    return "";
+  void rotate(float angle) {
+    rotationAngle += angle;
   }
 
   float getX() {
@@ -64,12 +45,20 @@ public class UFO {
     return y;
   }
 
-  void setX(float num) {
-    x = num;
+  void setX(float x) {
+    this.x = x;
   }
 
-  void setY(float num) {
-    y = num;
+  void setY(float y) {
+    this.y = y;
+  }
+
+  float getRotationAngle() {
+    return rotationAngle;
+  }
+
+  String getName() {
+    return "";
   }
 
   void splatter(float x, float y, color c) {}
@@ -80,19 +69,5 @@ public class UFO {
     return "";
   }
 
-  void move(float time) {
-    ycalculation(time);
-    xcalculation(time);
-  }
-
-  void rotate(float angle) {
-    rotationAngle += angle;
-  }
-
-  float getRotationAngle() {
-    return rotationAngle;
-  }
-
-  void updateSplatter() {
-  }
+  void updateSplatter() {}
 }

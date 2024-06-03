@@ -4,40 +4,38 @@ public class Peach extends Fruit {
   int yLocation;
   boolean belowScreen;
   boolean isSplit = false;
-  
+ 
   public Peach(){
-    super();
-    fruit = loadImage("peach.png");
-    this.setY(height+100000);
+  fruit = loadImage("peach.png");
   }
-  
+ 
   int getXloc(){
-    return xLocation;
+  return xLocation;
   }
-  
+ 
   int getYloc(){
-    return yLocation;
+  return yLocation;
   }
   void setXloc(int num){
-    xLocation=num;
+  xLocation=num;
   }
-  
+ 
   void setYloc(int num){
-    yLocation=num;
+  yLocation=num;
   }
-  
+ 
   String getName(){
    return "peach.png";
   }
-  
+ 
   void split(){
   }
-  
+ 
    @Override
   void splatter(float x, float y, color c){
-    super.splatter(x,y,color(#ff6800));
+  super.splatter(x,y,color(#ff6800));
   }
 void split(float x, float y){
-    super.split(x,y, getName());
+  super.split(x,y, getName());
   }
 }

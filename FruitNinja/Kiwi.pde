@@ -5,38 +5,36 @@ public class Kiwi extends Fruit {
   boolean belowScreen;
    color splatterColor;
    boolean isSplit = false;
-  
+ 
   public Kiwi(){
-    super();
-    fruit = loadImage("kiwi.png");
-    this.setY(height+100000);
-     splatterColor = color(255,0, 0); 
+  fruit = loadImage("kiwi.png");
+   splatterColor = color(255,0, 0);
   }
-  
+ 
   int getXloc(){
-    return xLocation;
+  return xLocation;
   }
-  
+ 
   int getYloc(){
-    return yLocation;
+  return yLocation;
   }
   void setXloc(int num){
-    xLocation=num;
+  xLocation=num;
   }
-  
+ 
   void setYloc(int num){
-    yLocation=num;
+  yLocation=num;
   }
-  
+ 
   String getName(){
-    return "kiwi.png";
+  return "kiwi.png";
   }
-  
+ 
 void split(float x, float y){
-    super.split(x,y, getName());
+  super.split(x,y, getName());
   }
-    @Override
+  @Override
   void splatter(float x, float y, color c){
-    super.splatter(x,y,color(#68c51a));
+  super.splatter(x,y,color(#68c51a));
   }
 }

@@ -4,40 +4,38 @@ public class Pineapple extends Fruit {
   int yLocation;
   boolean belowScreen;
   boolean isSplit = false;
-  
+ 
   public Pineapple(){
-    super();
-    fruit = loadImage("pineapple.png");
-    this.setY(height+100000);
+  fruit = loadImage("pineapple.png");
   }
-  
+ 
   int getXloc(){
-    return xLocation;
+  return xLocation;
   }
-  
+ 
   int getYloc(){
-    return yLocation;
+  return yLocation;
   }
   void setXloc(int num){
-    xLocation=num;
+  xLocation=num;
   }
-  
+ 
   void setYloc(int num){
-    yLocation=num;
+  yLocation=num;
   }
-  
+ 
   String getName(){
-    return "pineapple.png";
+  return "pineapple.png";
   }
-  
+ 
   void split(){
   }
-  
+ 
    @Override
   void splatter(float x, float y, color c){
-    super.splatter(x,y,color(#4cf822));
+  super.splatter(x,y,color(#4cf822));
   }
 void split(float x, float y){
-    super.split(x,y, getName());
+  super.split(x,y, getName());
   }
 }

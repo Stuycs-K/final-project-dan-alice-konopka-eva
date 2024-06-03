@@ -1,7 +1,3 @@
-ArrayList<Float> recentXPositions = new ArrayList<Float>();
-float minDistance = 50;
-int maxRecentPositions = 5; 
-
 float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
@@ -12,27 +8,24 @@ boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
 
-int lastFruitTime = 0; 
+int lastFruitTime = 0;
 int nextFruitInterval = 0;
 
 void setup() {
   size(1000, 600);
   generateRanFruit();
-  lastFruitTime = millis(); 
-  nextFruitInterval = (int)(Math.random()*5000); 
+  lastFruitTime = millis();
+  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Ensure the interval is always positive and within a reasonable range
 }
 
-void generateRanFruit(){
+void generateRanFruit() {
   int random = (int)(Math.random() * 9);
 
   UFO randomFruit = new Watermelon();
   if (random == 0) {
     randomFruit = new Banana();
   }
-  //if (random == 1) {
-  //  randomFruit = new Bomb();
- // }
-  if (random == 2||random==1) {//remove the 1 part later - this is just for MVP/demo
+  if (random == 2 || random == 1) { // Remove the 1 part later - this is just for MVP/demo
     randomFruit = new Coconut();
   }
   if (random == 3) {
@@ -53,33 +46,14 @@ void generateRanFruit(){
   if (random == 8) {
     randomFruit = new Lemon();
   }
-  float newX;
-  boolean validPosition;
-  do {
-    newX = random(0, width);
-    validPosition = true;
-    for (float x : recentXPositions) {
-      if (abs(newX - x) < minDistance) {
-        validPosition = false;
-        break;
-      }
-    }
-  } while (!validPosition);
-  randomFruit.setX(newX);
-  randomFruit.setY(height + 10000);
   itemList.add(randomFruit);
-  recentXPositions.add(newX);
-  if (recentXPositions.size() > maxRecentPositions) {
-    recentXPositions.remove(0);
-  }
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000);
+  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Update next interval
 }
-
 
 void endGame() {
   System.out.println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Final Score: "+(int)score, width/2, height/2);
+  text("Game Over! Final Score: " + (int)score, width / 2, height / 2);
   noLoop();
 }
 
@@ -87,61 +61,54 @@ void keyPressed() {
   animate = true;
 }
 
-
 void mouseDragged() {
-  for (int i = itemList.size()-1; i >= 0; i--) {
+  for (int i = itemList.size() - 1; i >= 0; i--) {
     UFO currentIt = itemList.get(i);
     if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
       if (!currentIt.getName().equals("bomb.png")) {
         score++;
         removedItems.add(currentIt);
-        //currentIt.split(currentIt.getXloc(),currentIt.getYloc());
       } else {
         endGame();
       }
       itemList.remove(i);
-      animate=false;
+      animate = false;
     }
   }
 }
 
-void mousePressed() {
-}
+void mousePressed() {}
 
-void pauseGame() {
-}
+void pauseGame() {}
 
 void replay() {
   itemList.clear();
   setup();
-  // loop();
-  noLoop();
+  loop();
 }
 
 void draw() {
   background(#904A30);
   fill(255);
-  text((int)score, 10, 10);
+  text("Score: " + (int)score, 10, 10);
+  text("Missed: " + (int)missedFruits, 10, 20);
+
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
     generateRanFruit();
   }
-  for (int i = removedItems.size() - 1; i >= 0; i--) {
-    UFO splatterIt = removedItems.get(i);
+
+  for (UFO splatterIt : removedItems) {
     splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
     splatterIt.updateSplatter();
-    if (splatterIt instanceof Fruit && ((Fruit) splatterIt).alpha <= 0) {
-      removedItems.remove(i); 
-    }
+    splatterIt.split(splatterIt.getX(), splatterIt.getY());
   }
 
   for (int i = itemList.size() - 1; i >= 0; i--) {
-    time += 0.1;
     UFO currentIt = itemList.get(i);
-    currentIt.move(time);
+    currentIt.move();
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
-      time = 0;
       itemList.remove(i);
       missedFruits++;
       if (missedFruits >= 3) {
@@ -152,8 +119,7 @@ void draw() {
 
   for (int i = halfList.size() - 1; i >= 0; i--) {
     UFO currentHalf = halfList.get(i);
-    time += 0.1;
-    currentHalf.move(time);
+    currentHalf.move();
     if (currentHalf.getY() > height) {
       halfList.remove(i);
     }
