@@ -47,7 +47,7 @@ void generateRanFruit() {
   }
   itemList.add(randomFruit);
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Update next interval
+  nextFruitInterval = (int)(Math.random() * 5000 + 5000);
 }
 
 void endGame() {
