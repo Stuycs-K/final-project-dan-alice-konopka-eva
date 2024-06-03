@@ -9,7 +9,7 @@ public class UFO {
     x = random(100, width - 100);
     y = height - 50; // Start near the bottom of the screen
     velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
-    velocityY = random(-12, -15); // Initial velocity upwards, less height
+    velocityY = random(-15,-20); // Initial velocity upwards, less height
     rotationAngle = random(0, TWO_PI);
   }
 
