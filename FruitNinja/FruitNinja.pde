@@ -106,7 +106,7 @@ void draw() {
 
   for (int i = itemList.size() - 1; i >= 0; i--) {
     UFO currentIt = itemList.get(i);
-    currentIt.move(time);
+    currentIt.move();
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
       itemList.remove(i);
@@ -119,7 +119,7 @@ void draw() {
 
   for (int i = halfList.size() - 1; i >= 0; i--) {
     UFO currentHalf = halfList.get(i);
-    currentHalf.move(time);
+    currentHalf.move();
     if (currentHalf.getY() > height) {
       halfList.remove(i);
     }
