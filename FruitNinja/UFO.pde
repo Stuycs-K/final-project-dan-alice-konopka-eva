@@ -6,18 +6,18 @@ public class UFO {
   float rotationAngle;
 
   public UFO() {
-    x = random(0, width);
+    x = random(100, width - 100);
     y = height - 50; // Start near the bottom of the screen
-    velocityX = random(-2, 2);
-    velocityY = random(-10, -20); // Initial velocity upwards
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
     rotationAngle = random(0, TWO_PI);
   }
 
   public UFO(float x, float y) {
     this.x = x;
     this.y = y;
-    velocityX = random(-2, 2);
-    velocityY = random(-10, -20); // Initial velocity upwards
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
     rotationAngle = random(0, TWO_PI);
   }
 
@@ -70,27 +70,4 @@ public class UFO {
   }
 
   void updateSplatter() {}
-}
-
-public class Banana extends UFO {
-  PImage fruit;
-  boolean isSplit = false;
-
-  public Banana() {
-    super();
-    fruit = loadImage("banana.png");
-  }
-
-  String getName() {
-    return "banana.png";
-  }
-
-  @Override
-  void splatter(float x, float y, color c) {
-    super.splatter(x, y, color(#efe621));
-  }
-
-  void split(float x, float y) {
-    super.split(x, y, getName());
-  }
 }
