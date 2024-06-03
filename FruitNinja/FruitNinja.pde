@@ -15,7 +15,7 @@ void setup() {
   size(1000, 600);
   generateRanFruit();
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Ensure the interval is always positive and within a reasonable range
+  nextFruitInterval = (int)(Math.random() * 5000); 
 }
 
 void generateRanFruit() {
