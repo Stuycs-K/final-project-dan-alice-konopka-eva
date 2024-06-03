@@ -6,7 +6,7 @@ public class Half extends UFO {
     super(x, y);
     this.name = name;
     this.whichHalf = whichHalf;
-    velocityY = 2; x
+    velocityY = 2; 
   }
 
   @Override
