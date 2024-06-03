@@ -1,8 +1,7 @@
-float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
-
+float score;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -52,6 +51,10 @@ void generateRanFruit() {
 }
 
 void endGame() {
+  background(#904A30);
+  fill(255);
+  text("Score: " + (int)score, 10, 10);
+  text("Missed: " + (int)missedFruits, 10, 20);
   System.out.println("Game Over! Final Score: " + (int)score);
   text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2-30, height / 2);
   noLoop();
