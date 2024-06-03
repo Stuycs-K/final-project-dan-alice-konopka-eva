@@ -1,3 +1,4 @@
+
 public class UFO {
   float x, y;
   float velocityX, velocityY;
@@ -5,18 +6,18 @@ public class UFO {
   float rotationAngle;
 
   public UFO() {
-    x = random(0, width);
-    y = height - 50;
-    velocityX = random(-2, 2);
-    velocityY = random(-10, -20);
+    x = random(100, width - 100);
+    y = height - 50; // Start near the bottom of the screen
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
     rotationAngle = random(0, TWO_PI);
   }
 
   public UFO(float x, float y) {
     this.x = x;
     this.y = y;
-    velocityX = random(-2, 2);
-    velocityY = random(-10, -20);
+    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
+    velocityY = random(-12, -15); // Initial velocity upwards, less height
     rotationAngle = random(0, TWO_PI);
   }
 
@@ -25,13 +26,10 @@ public class UFO {
     y += velocityY;
     velocityY += gravity; // Apply gravity to the vertical velocity
 
-    // Bounce off the edges
-    if (x < 0 || x > width) {
-      velocityX *= -1;
-    }
+    // Remove the fruit if it falls off the screen
     if (y > height) {
-      y = height;
-      velocityY *= -0.5; // Reduce speed and reverse direction when hitting the ground
+      y = height + 1; // Move the fruit just out of the visible screen to indicate it's removed
+      velocityY = 0;  // Stop the velocity
     }
   }
 
@@ -53,6 +51,10 @@ public class UFO {
 
   void setY(float y) {
     this.y = y;
+  }
+
+  float getRotationAngle() {
+    return rotationAngle;
   }
 
   String getName() {

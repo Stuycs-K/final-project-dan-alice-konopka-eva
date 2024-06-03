@@ -1,42 +1,30 @@
 public class Half extends UFO {
-  PImage fruit;
-  float xLocation;
-  float yLocation;
-  boolean belowScreen;
   String name;
   String whichHalf;
 
   public Half(float x, float y, String name, String whichHalf) {
-  super(x, y);
-  fruit = loadImage("pineapple.png");
-  this.name =name;
-  this.whichHalf=whichHalf;
+    super(x, y);
+    this.name = name;
+    this.whichHalf = whichHalf;
+    velocityY = 2; 
+  }
+
+  @Override
+  void move() {
+    super.move();
+    velocityY += gravity; 
+
+    if (y > height) {
+      y = height + 1; 
+      velocityY = 0; 
+    }
   }
 
   String getHalf() {
-  return whichHalf;
-  }
-
-  float getX() {
-  return xLocation;
-  }
-
-  float getY() {
-  return yLocation;
-  }
-
-  void setX(float num) {
-  xLocation = num;
-  }
-
-  void setY(float num) {
-  yLocation = num;
+    return whichHalf;
   }
 
   String getName() {
-  return name;
-  }
-
-  void splatter(float x, float y, color c) {
+    return name;
   }
 }
