@@ -46,6 +46,10 @@ In class: Worked on the visibility of split, tried doing gravitational attractio
 
 At home: Made game end after 3 fruits missed, made splatters fade out, fixed some small visual bugs, fixed a bug where fruits spawn in the wrong place in certain cases
 
+### 6/2/24
+
+At home: FIXED lagginess, fruit slices jumping around, and issues with fruits spawning in different places by changing the way the physics is calculated. Also, fixed a bug in the watermelon class where it doesn't use the right inherited method for certain physics. Also made gameplay faster and smoother and changed splatter colors, and keyboard shortcut to end game
+
 ## GROUP MEMBER 2 - Eva
 
 ### 5/23/24
