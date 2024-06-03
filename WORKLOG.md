@@ -52,7 +52,7 @@ At home: FIXED lagginess, fruit slices jumping around, and issues with fruits sp
 
 ### 6/3/24
 
-In class: Fixed a bug with the end screen where the missedfruits and the game over text wouldn't show up properly
+In class: Fixed a bug with the end screen where the missedfruits and the game over text wouldn't show up properly. Also starting bomb testing
 
 ## GROUP MEMBER 2 - Eva
 
