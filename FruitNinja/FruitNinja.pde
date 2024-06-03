@@ -115,9 +115,9 @@ void draw() {
       itemList.remove(i);
       missedFruits++;
       if (missedFruits >= 3) {
-          background(#904A30);
-        text("Score: " + (int)score, 10, 10); 
-        text("Missed: " + (int)missedFruits, 10, 20); 
+      //   // background(#904A30);
+      //  text("Score: " + (int)score, 10, 10); 
+    //    text("Missed: " + (int)missedFruits, 10, 20); 
         endGame();
       }
     }
