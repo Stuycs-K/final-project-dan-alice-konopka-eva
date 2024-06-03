@@ -1,32 +1,31 @@
 public class Watermelon extends Fruit {
   PImage fruit;
-  int xLocation;
-  int yLocation;
+  float xLocation;
+  float yLocation;
   boolean belowScreen;
   boolean isSplit = false;
   
   public Watermelon(){
     super();
-    fruit = loadImage("watermelon.png");
-    this.setY(height+100000);
+   fruit = loadImage("watermelon.png");
   }
   
   String getName(){
     return "watermelon.png";
   }
   
-  int getXloc(){
+  float getX(){
     return xLocation;
   }
   
-  int getYloc(){
+  float getY(){
     return yLocation;
   }
-  void setXloc(int num){
+  void setX(float num){
     xLocation=num;
   }
   
-  void setYloc(int num){
+  void setY(float num){
     yLocation=num;
   }
   
@@ -34,14 +33,15 @@ public class Watermelon extends Fruit {
    return fruit;
   }
   
-  void split(){
-  }
-  
    @Override
   void splatter(float x, float y, color c){
     super.splatter(x,y,color(#ff0065));
   }
+//void split(float x, float y){
+  //  super.split(x,y, getName());
+  //}
+
 void split(float x, float y){
-    super.split(x,y, getName());
+  super.split(x,y, getName());
   }
 }
