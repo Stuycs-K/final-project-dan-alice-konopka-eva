@@ -24,7 +24,10 @@ void generateRanFruit() {
   if (random == 0) {
     randomFruit = new Banana();
   }
-  if (random == 2 || random == 1) { // Remove the 1 part later - this is just for MVP/demo
+  if (random == 1) {
+    randomFruit = new Bomb();
+  }
+  if (random == 2 ) { 
     randomFruit = new Coconut();
   }
   if (random == 3) {

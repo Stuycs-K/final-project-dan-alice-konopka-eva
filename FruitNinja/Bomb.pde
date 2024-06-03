@@ -1,10 +1,10 @@
-/*public class Bomb extends UFO{
+public class Bomb extends UFO{
   PImage bombImage;
   float xLocation;
   float yLocation;
   boolean belowScreen;
   
-  public Bomb(float xint, float yint){
+  public Bomb(){
     bombImage = loadImage("bomb.png");
     xLocation = (float)(Math.random()*width);
      yLocation = 0;
@@ -33,4 +33,3 @@
     return "bomb.png";
   }
 }
-*/
