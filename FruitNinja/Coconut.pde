@@ -34,7 +34,7 @@ public class Coconut extends Fruit {
  
    @Override
   void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#fceddf));
+  super.splatter(x,y,color(#FCFBED));
   }
   void split(float x, float y){
     /*
