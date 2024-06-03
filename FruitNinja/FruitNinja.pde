@@ -59,6 +59,9 @@ void endGame() {
 
 void keyPressed() {
   animate = true;
+  if (key == 'e' || key == 'E') {
+    endGame();
+  }
 }
 
 void mouseDragged() {
