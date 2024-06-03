@@ -48,7 +48,7 @@ At home: Made game end after 3 fruits missed, made splatters fade out, fixed som
 
 ### 6/2/24
 
-At home: FIXED lagginess, fruit slices jumping around, and issues with fruits spawning in different places by changing the way the physics is calculated. Also, fixed a bug in the watermelon class where it doesn't use the right inherited method for certain physics. Also made gameplay faster and smoother
+At home: FIXED lagginess, fruit slices jumping around, and issues with fruits spawning in different places by changing the way the physics is calculated. Also, fixed a bug in the watermelon class where it doesn't use the right inherited method for certain physics. Also made gameplay faster and smoother and changed splatter colors
 
 ## GROUP MEMBER 2 - Eva
 
