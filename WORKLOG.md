@@ -84,3 +84,6 @@ In class: No progress made. Struggled with split.
 
 ### 6/1/24
 At home: Created new class, Half, and made split work correctly, with physics applied to each half of the fruit. 
+
+### 6/3/24
+In class: No progress, time spent merging and doing a demo.
