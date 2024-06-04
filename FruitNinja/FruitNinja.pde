@@ -12,14 +12,14 @@ int lastFruitTime = 0;
 int nextFruitInterval = 0;
 
 boolean flash = false; 
-float flashAlpha = 255; //control the alpha (transparency) of the flash
+float flashAlpha = 255; // Control the alpha (transparency) of the flash
 
 void setup() {
   size(1000, 600);
   generateRanFruit();
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
-    backgroundImage = loadImage("background.png");
+  backgroundImage = loadImage("background.png");
 }
 
 void generateRanFruit() {
@@ -42,7 +42,7 @@ void generateRanFruit() {
     randomFruit = new Pineapple();
   } else if (random == 7) {
     randomFruit = new Watermelon();
-  } else if (random==8){
+  } else if (random == 8) {
     randomFruit = new Lemon();
   } else {
     randomFruit = new Bomb();
@@ -122,11 +122,13 @@ void draw() {
     currentIt.move();
     currentIt.rotate(0.05);
     if (currentIt.getY() > height) {
-      itemList.remove(i);
-      missedFruits++;
-      if (missedFruits >= 3) {
-        endGame();
+      if (!currentIt.getName().equals("bomb.png")) {
+        missedFruits++;
+        if (missedFruits >= 3) {
+          endGame();
+        }
       }
+      itemList.remove(i);
     }
   }
 
