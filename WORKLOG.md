@@ -54,6 +54,10 @@ At home: FIXED lagginess, fruit slices jumping around, and issues with fruits sp
 
 In class: Fixed a bug with the end screen where the missedfruits and the game over text wouldn't show up properly. Also starting bomb testing
 
+### 6/4/24
+
+Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
+
 ## GROUP MEMBER 2 - Eva
 
 ### 5/23/24
