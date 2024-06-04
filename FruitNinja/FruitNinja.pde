@@ -1,7 +1,8 @@
+float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
-float score;
+
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -14,38 +15,30 @@ void setup() {
   size(1000, 600);
   generateRanFruit();
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 2000); 
+  nextFruitInterval = (int)(Math.random() * 2000);
 }
 
 void generateRanFruit() {
   int random = (int)(Math.random() * 9);
 
-  UFO randomFruit = new Watermelon();
+  UFO randomFruit;
   if (random == 0) {
     randomFruit = new Banana();
-  }
-  if (random == 1) {
+  } else if (random == 1) {
     randomFruit = new Bomb();
-  }
-  if (random == 2 ) { 
+  } else if (random == 2) {
     randomFruit = new Coconut();
-  }
-  if (random == 3) {
+  } else if (random == 3) {
     randomFruit = new Kiwi();
-  }
-  if (random == 4) {
+  } else if (random == 4) {
     randomFruit = new Mango();
-  }
-  if (random == 5) {
+  } else if (random == 5) {
     randomFruit = new Peach();
-  }
-  if (random == 6) {
+  } else if (random == 6) {
     randomFruit = new Pineapple();
-  }
-  if (random == 7) {
+  } else if (random == 7) {
     randomFruit = new Watermelon();
-  }
-  if (random == 8) {
+  } else {
     randomFruit = new Lemon();
   }
   itemList.add(randomFruit);
@@ -58,8 +51,8 @@ void endGame() {
   fill(255);
   text("Score: " + (int)score, 10, 10);
   text("Missed: " + (int)missedFruits, 10, 20);
-  System.out.println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2-30, height / 2);
+  println("Game Over! Final Score: " + (int)score);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 30, height / 2);
   noLoop();
 }
 
@@ -121,9 +114,6 @@ void draw() {
       itemList.remove(i);
       missedFruits++;
       if (missedFruits >= 3) {
-      //   // background(#904A30);
-      //  text("Score: " + (int)score, 10, 10); 
-    //    text("Missed: " + (int)missedFruits, 10, 20); 
         endGame();
       }
     }
