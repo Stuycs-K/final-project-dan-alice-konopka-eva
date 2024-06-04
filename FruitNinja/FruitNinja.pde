@@ -2,7 +2,7 @@ float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
-
+PImage backgroundImage;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -19,6 +19,7 @@ void setup() {
   generateRanFruit();
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
+    backgroundImage = loadImage("background.png");
 }
 
 void generateRanFruit() {
@@ -100,7 +101,7 @@ void replay() {
 }
 
 void draw() {
-  background(#904A30);
+  background(backgroundImage);
   fill(255);
   text("Score: " + (int)score, 10, 10);
   text("Missed: " + (int)missedFruits, 10, 20);
