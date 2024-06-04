@@ -11,6 +11,9 @@ ArrayList<UFO> removedItems = new ArrayList<UFO>();
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
 
+boolean flash = false; 
+float flashAlpha = 255; //control the alpha (transparency) of the flash
+
 void setup() {
   size(1000, 600);
   generateRanFruit();
@@ -19,7 +22,7 @@ void setup() {
 }
 
 void generateRanFruit() {
-  int random = (int)(Math.random() * 9);
+  int random = (int)(Math.random() * 15);
 
   UFO randomFruit;
   if (random == 0) {
@@ -38,12 +41,14 @@ void generateRanFruit() {
     randomFruit = new Pineapple();
   } else if (random == 7) {
     randomFruit = new Watermelon();
-  } else {
+  } else if (random==8){
     randomFruit = new Lemon();
+  } else {
+    randomFruit = new Bomb();
   }
   itemList.add(randomFruit);
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Update next interval
+  nextFruitInterval = (int)(Math.random() * 5000); 
 }
 
 void endGame() {
@@ -52,8 +57,13 @@ void endGame() {
   text("Score: " + (int)score, 10, 10);
   text("Missed: " + (int)missedFruits, 10, 20);
   println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Final Score: " + (int)score, width / 2 - 30, height / 2);
+  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 30, height / 2);
   noLoop();
+}
+
+void triggerFlash() {
+  flash = true;
+  flashAlpha = 400; // Reset flashAlpha to a higher value for a longer-lasting effect
 }
 
 void keyPressed() {
@@ -71,7 +81,7 @@ void mouseDragged() {
         score++;
         removedItems.add(currentIt);
       } else {
-        endGame();
+        triggerFlash();
       }
       itemList.remove(i);
       animate = false;
@@ -150,5 +160,15 @@ void draw() {
     imageMode(CENTER);
     image(fruit, 0, 0);
     popMatrix();
+  }
+
+  if (flash) {
+    fill(255, flashAlpha);
+    rect(0, 0, width, height);
+    flashAlpha -= 5; 
+    if (flashAlpha <= 0) {
+      flash = false;
+      endGame();
+    }
   }
 }
