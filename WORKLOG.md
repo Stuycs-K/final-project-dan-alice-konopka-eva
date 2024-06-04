@@ -50,6 +50,10 @@ At home: Made game end after 3 fruits missed, made splatters fade out, fixed som
 
 At home: FIXED lagginess, fruit slices jumping around, and issues with fruits spawning in different places by changing the way the physics is calculated. Also, fixed a bug in the watermelon class where it doesn't use the right inherited method for certain physics. Also made gameplay faster and smoother and changed splatter colors, and keyboard shortcut to end game
 
+### 6/3/24
+
+In class: Fixed a bug with the end screen where the missedfruits and the game over text wouldn't show up properly. Also starting bomb testing
+
 ## GROUP MEMBER 2 - Eva
 
 ### 5/23/24
@@ -80,3 +84,6 @@ In class: No progress made. Struggled with split.
 
 ### 6/1/24
 At home: Created new class, Half, and made split work correctly, with physics applied to each half of the fruit. 
+
+### 6/3/24
+In class: No progress, time spent merging and doing a demo.
