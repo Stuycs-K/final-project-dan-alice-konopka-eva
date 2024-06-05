@@ -1,7 +1,8 @@
+float score;
 float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
-float score;
+PImage backgroundImage;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -10,54 +11,73 @@ ArrayList<UFO> removedItems = new ArrayList<UFO>();
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
 
+boolean flash = false; 
+float flashAlpha = 255; // Control the alpha (transparency) of the flash
+
 void setup() {
   size(1000, 600);
   generateRanFruit();
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 2000); 
+  nextFruitInterval = (int)(Math.random() * 2000);
+  backgroundImage = loadImage("background.png");
 }
 
 void generateRanFruit() {
-  int random = (int)(Math.random() * 9);
+  int random = (int)(Math.random() * 15);
 
-  UFO randomFruit = new Watermelon();
+  UFO randomFruit;
   if (random == 0) {
     randomFruit = new Banana();
-  }
-  if (random == 2 || random == 1) { // Remove the 1 part later - this is just for MVP/demo
+  } else if (random == 1) {
+    randomFruit = new Bomb();
+  } else if (random == 2) {
     randomFruit = new Coconut();
-  }
-  if (random == 3) {
+  } else if (random == 3) {
     randomFruit = new Kiwi();
-  }
-  if (random == 4) {
+  } else if (random == 4) {
     randomFruit = new Mango();
-  }
-  if (random == 5) {
+  } else if (random == 5) {
     randomFruit = new Peach();
-  }
-  if (random == 6) {
+  } else if (random == 6) {
     randomFruit = new Pineapple();
-  }
-  if (random == 7) {
+  } else if (random == 7) {
     randomFruit = new Watermelon();
-  }
-  if (random == 8) {
+  } else if (random == 8) {
     randomFruit = new Lemon();
+  } else {
+    randomFruit = new Bomb();
   }
   itemList.add(randomFruit);
   lastFruitTime = millis();
-  nextFruitInterval = (int)(Math.random() * 5000 + 5000); // Update next interval
+  nextFruitInterval = (int)(Math.random() * 5000); 
 }
 
 void endGame() {
-  background(#904A30);
+  background(backgroundImage);
   fill(255);
-  text("Score: " + (int)score, 10, 10);
-  text("Missed: " + (int)missedFruits, 10, 20);
-  System.out.println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2-30, height / 2);
+  rect(5,5,120,30);
+  rect(5,40,120,30);
+  fill(0);
+  textSize(30);
+  text("Score: " + (int)score, 10, 30);
+  text("Missed: " + (int)missedFruits, 10, 65);
+  println("Game Over! Final Score: " + (int)score);
+  fill(255);
+  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 100, height / 2);
   noLoop();
+}
+
+void winGame(){
+  background(#3f9546);
+  fill(0);
+  println("You won!");
+  text("You Win!", width / 2 - 30, height / 2);
+  noLoop();
+}
+
+void triggerFlash() {
+  flash = true;
+  flashAlpha = 400; // Reset flashAlpha to a higher value for a longer-lasting effect
 }
 
 void keyPressed() {
@@ -75,7 +95,7 @@ void mouseDragged() {
         score++;
         removedItems.add(currentIt);
       } else {
-        endGame();
+        triggerFlash();
       }
       itemList.remove(i);
       animate = false;
@@ -94,10 +114,14 @@ void replay() {
 }
 
 void draw() {
-  background(#904A30);
+  background(backgroundImage);
   fill(255);
-  text("Score: " + (int)score, 10, 10);
-  text("Missed: " + (int)missedFruits, 10, 20);
+  rect(5,5,120,30);
+  rect(5,40,120,30);
+  fill(0);
+  textSize(30);
+  text("Score: " + (int)score, 10, 30);
+  text("Missed: " + (int)missedFruits, 10, 65);
 
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
@@ -114,15 +138,18 @@ void draw() {
     UFO currentIt = itemList.get(i);
     currentIt.move();
     currentIt.rotate(0.05);
+    
     if (currentIt.getY() > height) {
-      itemList.remove(i);
-      missedFruits++;
-      if (missedFruits >= 3) {
-      //   // background(#904A30);
-      //  text("Score: " + (int)score, 10, 10); 
-    //    text("Missed: " + (int)missedFruits, 10, 20); 
-        endGame();
+      if (!currentIt.getName().equals("bomb.png")) {
+        missedFruits++;
+        if (missedFruits >= 3) {
+          endGame();
+        }
       }
+      if (score>=5){
+    winGame();
+  }
+      itemList.remove(i);
     }
   }
 
@@ -157,5 +184,15 @@ void draw() {
     imageMode(CENTER);
     image(fruit, 0, 0);
     popMatrix();
+  }
+
+  if (flash) {
+    fill(255, flashAlpha);
+    rect(0, 0, width, height);
+    flashAlpha -= 5; 
+    if (flashAlpha <= 0) {
+      flash = false;
+      endGame();
+    }
   }
 }
