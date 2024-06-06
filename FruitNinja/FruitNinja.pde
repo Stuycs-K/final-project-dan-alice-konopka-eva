@@ -7,6 +7,8 @@ String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", 
 boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
+PImage playImage;
+PImage pauseImage;
 
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
@@ -103,8 +105,11 @@ void mouseDragged() {
   }
 }
 
-void mousePressed() {}
-
+void mousePressed() {
+  if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
+    isPaused = !isPaused; 
+  }
+}
 void pauseGame() {}
 
 void replay() {
