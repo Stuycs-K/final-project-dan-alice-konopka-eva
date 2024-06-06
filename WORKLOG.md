@@ -56,7 +56,10 @@ In class: Fixed a bug with the end screen where the missedfruits and the game ov
 
 ### 6/4/24
 
-Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
+At home: Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
+
+### 6/5/24
+Started basic pause functionality
 
 ## GROUP MEMBER 2 - Eva
 
