@@ -59,7 +59,12 @@ In class: Fixed a bug with the end screen where the missedfruits and the game ov
 At home: Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
 
 ### 6/5/24
-Started basic pause functionality
+
+At home: Started basic pause functionality - made a template for the code but didn't upload any images yet
+
+### 6/6/24
+
+At home: worked on the pause button, created code for a menu that would pop up when the game is paused
 
 ## GROUP MEMBER 2 - Eva
 
