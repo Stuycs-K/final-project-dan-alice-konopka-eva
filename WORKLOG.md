@@ -91,3 +91,6 @@ At home: Created new class, Half, and made split work correctly, with physics ap
 
 ### 6/3/24
 In class: No progress, time spent merging and doing a demo.
+
+### 6/5/24
+In class: Added a winGame method, updated endGame and draw() visually.
