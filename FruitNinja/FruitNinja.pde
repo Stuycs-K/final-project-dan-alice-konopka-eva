@@ -5,15 +5,14 @@ ArrayList<UFO> halfList = new ArrayList<UFO>();
 PImage backgroundImage;
 PImage playImage;
 PImage pauseImage;
+PImage replayImage;
 boolean isPaused = false;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
-
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
-
 boolean flash = false; 
 float flashAlpha = 255;
 
@@ -25,6 +24,7 @@ void setup() {
   backgroundImage = loadImage("background.png");
   playImage = loadImage("play.png");
   pauseImage = loadImage("pause.png");
+  replayImage = loadImage("replay.png");
 }
 
 void generateRanFruit() {
@@ -69,7 +69,7 @@ void endGame() {
 
 void triggerFlash() {
   flash = true;
-  flashAlpha = 400; 
+  flashAlpha = 400;
 }
 
 void keyPressed() {
@@ -82,6 +82,16 @@ void keyPressed() {
 void mousePressed() {
   if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
     isPaused = !isPaused; 
+  }
+  
+  if (isPaused) {
+    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 + 40 && mouseY <= height / 2 + 80) {
+      replay();
+      isPaused = false;
+    }
+    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 - 10 && mouseY <= height / 2 + 30) {
+      isPaused = false;
+    }
   }
 }
 
@@ -116,7 +126,6 @@ void draw() {
   fill(255);
   text("Score: " + (int)score, 10, 10);
   text("Missed: " + (int)missedFruits, 10, 20);
-
   if (isPaused) {
     image(playImage, width - 60, 20, 40, 40);
   } else {
@@ -192,5 +201,15 @@ void draw() {
         endGame();
       }
     }
+  } else {
+      fill(0, 150);
+    rect(width / 2 - 100, height / 2 - 100, 200, 200, 10);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Game Paused", width / 2, height / 2 - 60);
+    rect(width / 2 - 50, height / 2 - 10, 100, 40, 5);
+    text("Play", width / 2, height / 2 + 10);
+    image(replayImage, width / 2 - 25, height / 2 + 40, 50, 50); 
   }
 }
