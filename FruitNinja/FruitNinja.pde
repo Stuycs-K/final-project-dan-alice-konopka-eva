@@ -3,18 +3,19 @@ float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
 PImage backgroundImage;
+PImage playImage;
+PImage pauseImage;
+boolean isPaused = false;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
-PImage playImage;
-PImage pauseImage;
 
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
 
 boolean flash = false; 
-float flashAlpha = 255; // Control the alpha (transparency) of the flash
+float flashAlpha = 255; 
 
 void setup() {
   size(1000, 600);
@@ -22,6 +23,8 @@ void setup() {
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
   backgroundImage = loadImage("background.png");
+  playImage = loadImage("play.png");
+  pauseImage = loadImage("pause.png");
 }
 
 void generateRanFruit() {
@@ -55,37 +58,31 @@ void generateRanFruit() {
 }
 
 void endGame() {
-  background(backgroundImage);
+  background(#904A30);
   fill(255);
-  rect(5,5,120,30);
-  rect(5,40,120,30);
-  fill(0);
-  textSize(30);
-  text("Score: " + (int)score, 10, 30);
-  text("Missed: " + (int)missedFruits, 10, 65);
+  text("Score: " + (int)score, 10, 10);
+  text("Missed: " + (int)missedFruits, 10, 20);
   println("Game Over! Final Score: " + (int)score);
-  fill(255);
-  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 100, height / 2);
-  noLoop();
-}
-
-void winGame(){
-  background(#3f9546);
-  fill(0);
-  println("You won!");
-  text("You Win!", width / 2 - 30, height / 2);
+  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 30, height / 2);
   noLoop();
 }
 
 void triggerFlash() {
   flash = true;
-  flashAlpha = 400; // Reset flashAlpha to a higher value for a longer-lasting effect
+  flashAlpha = 400;
 }
 
 void keyPressed() {
   animate = true;
   if (key == 'e' || key == 'E') {
     endGame();
+  }
+}
+
+void mousePressed() {
+
+  if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
+    isPaused = !isPaused;
   }
 }
 
@@ -105,11 +102,6 @@ void mouseDragged() {
   }
 }
 
-void mousePressed() {
-  if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
-    isPaused = !isPaused; 
-  }
-}
 void pauseGame() {}
 
 void replay() {
@@ -121,12 +113,14 @@ void replay() {
 void draw() {
   background(backgroundImage);
   fill(255);
-  rect(5,5,120,30);
-  rect(5,40,120,30);
-  fill(0);
-  textSize(30);
-  text("Score: " + (int)score, 10, 30);
-  text("Missed: " + (int)missedFruits, 10, 65);
+  text("Score: " + (int)score, 10, 10);
+  text("Missed: " + (int)missedFruits, 10, 20);
+
+  if (isPaused) {
+    image(playImage, width - 60, 20, 40, 40);
+  } else {
+    image(pauseImage, width - 60, 20, 40, 40);
+  }
 
   int currentTime = millis();
   if (currentTime - lastFruitTime >= nextFruitInterval) {
@@ -143,7 +137,6 @@ void draw() {
     UFO currentIt = itemList.get(i);
     currentIt.move();
     currentIt.rotate(0.05);
-    
     if (currentIt.getY() > height) {
       if (!currentIt.getName().equals("bomb.png")) {
         missedFruits++;
@@ -151,9 +144,6 @@ void draw() {
           endGame();
         }
       }
-      if (score>=5){
-    winGame();
-  }
       itemList.remove(i);
     }
   }
