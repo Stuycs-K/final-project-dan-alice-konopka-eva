@@ -60,12 +60,13 @@ void generateRanFruit() {
 void endGame() {
   background(backgroundImage);
   fill(255);
-  rect(5,5,125,30);
-  rect(5,40,125,30);
+  rect(5,5,150,50);
+  rect(5,40,150,50);
   fill(0);
+    textAlign(CENTER, CENTER);
   textSize(30);
-  text("Score: " + (int)score, 10, 30);
-  text("Missed: " + (int)missedFruits, 10, 65);
+  text("Score: " + (int)score +"/5", 70, 30);
+  text("Missed: " + (int)missedFruits+"/3", 75, 65);
   println("Game Over! Final Score: " + (int)score);
   fill(255);
   text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
@@ -130,6 +131,8 @@ void pauseGame() {}
 
 void replay() {
   itemList.clear();
+  score = 0;
+  missedFruits = 0;
   setup();
   loop();
 }
