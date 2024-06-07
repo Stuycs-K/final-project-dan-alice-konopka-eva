@@ -68,7 +68,7 @@ void endGame() {
   text("Missed: " + (int)missedFruits, 10, 65);
   println("Game Over! Final Score: " + (int)score);
   fill(255);
-  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 100, height / 2);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
   noLoop();
 }
 
