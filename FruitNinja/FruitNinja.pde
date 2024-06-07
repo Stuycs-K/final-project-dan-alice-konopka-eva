@@ -138,7 +138,11 @@ void replay() {
 }
 
 void draw() {
-  background(backgroundImage);
+           if (score>=5){
+    winGame();
+  }
+  else {
+    background(backgroundImage);
   fill(255); 
 //  rect(5,5,125,30);
 //  rect(5,40,125,30);
@@ -177,9 +181,7 @@ void draw() {
             endGame();
           }
         }
-         if (score>=5){
-    winGame();
-  }
+
         itemList.remove(i);
       }
     }
@@ -237,4 +239,5 @@ void draw() {
     text("Play", width / 2, height / 2 + 10);
     image(replayImage, width / 2 - 25, height / 2 + 40, 50, 50); 
   }
+}
 }
