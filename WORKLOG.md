@@ -66,6 +66,10 @@ At home: Started basic pause functionality - made a template for the code but di
 
 At home: worked on the pause button, created code for a menu that would pop up when the game is paused
 
+### 6/7/24
+
+Fixed visuals and function of pause button, fixed bug with text positioning in win and end screens, fixed win screens (mostly for testing)
+
 ## GROUP MEMBER 2 - Eva
 
 ### 5/23/24
