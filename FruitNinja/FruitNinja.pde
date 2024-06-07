@@ -58,21 +58,15 @@ void generateRanFruit() {
 }
 
 void endGame() {
-  background(#904A30);
   background(backgroundImage);
   fill(255);
-  fill(255);
-  text("Score: " + (int)score, 10, 10);
-  rect(5,5,120,30);
-  text("Missed: " + (int)missedFruits, 10, 20);
-  rect(5,40,120,30);
+  rect(5,5,125,30);
+  rect(5,40,125,30);
   fill(0);
   textSize(30);
   text("Score: " + (int)score, 10, 30);
   text("Missed: " + (int)missedFruits, 10, 65);
   println("Game Over! Final Score: " + (int)score);
-  println("Game Over! Final Score: " + (int)score);
-  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 30, height / 2);
   fill(255);
   text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 100, height / 2);
   noLoop();
@@ -142,12 +136,13 @@ void replay() {
 
 void draw() {
   background(backgroundImage);
-  fill(255); rect(5,5,120,30);
-  rect(5,40,120,30);
-  fill(0);
+  fill(255); 
+//  rect(5,5,125,30);
+//  rect(5,40,125,30);
+//  fill(0);
   textSize(30);
-  text("Score: " + (int)score, 10, 30);
-  text("Missed: " + (int)missedFruits, 10, 65);
+  text("Score: " + (int)score +"/5", 10, 30);
+  text("Missed: " + (int)missedFruits+"/3", 10, 65);
   if (isPaused) {
     image(playImage, width - 60, 20, 40, 40);
   } else {
