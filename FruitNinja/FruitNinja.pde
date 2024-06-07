@@ -140,10 +140,12 @@ void draw() {
 //  rect(5,5,125,30);
 //  rect(5,40,125,30);
 //  fill(0);
+    textAlign(CENTER, CENTER);
   textSize(30);
-  text("Score: " + (int)score +"/5", 10, 30);
-  text("Missed: " + (int)missedFruits+"/3", 10, 65);
+  text("Score: " + (int)score +"/5", 70, 30);
+  text("Missed: " + (int)missedFruits+"/3", 75, 65);
   if (isPaused) {
+
     image(playImage, width - 60, 20, 40, 40);
   } else {
     image(pauseImage, width - 60, 20, 40, 40);
