@@ -158,7 +158,7 @@ void draw() {
     }
 
     for (UFO splatterIt : removedItems) {
-      splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
+      splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0), 0);
       splatterIt.updateSplatter();
       splatterIt.split(splatterIt.getX(), splatterIt.getY());
     }

@@ -59,7 +59,7 @@ public class UFO {
     return "";
   }
 
-  void splatter(float x, float y, color c) {}
+  void splatter(float x, float y, color c, float rotateAngle) {}
 
   void split(float x, float y) {}
 
