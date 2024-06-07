@@ -56,7 +56,15 @@ In class: Fixed a bug with the end screen where the missedfruits and the game ov
 
 ### 6/4/24
 
-Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
+At home: Worked on bomb (game ends, visual effect when ecplodes, simplification of the class), also added background to the game
+
+### 6/5/24
+
+At home: Started basic pause functionality - made a template for the code but didn't upload any images yet
+
+### 6/6/24
+
+At home: worked on the pause button, created code for a menu that would pop up when the game is paused
 
 ## GROUP MEMBER 2 - Eva
 
@@ -91,3 +99,6 @@ At home: Created new class, Half, and made split work correctly, with physics ap
 
 ### 6/3/24
 In class: No progress, time spent merging and doing a demo.
+
+### 6/5/24
+In class: Added a winGame method, updated endGame and draw() visually.

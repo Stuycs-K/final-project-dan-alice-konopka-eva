@@ -3,16 +3,18 @@ float missedFruits;
 ArrayList<UFO> itemList = new ArrayList<UFO>();
 ArrayList<UFO> halfList = new ArrayList<UFO>();
 PImage backgroundImage;
+PImage playImage;
+PImage pauseImage;
+PImage replayImage;
+boolean isPaused = false;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
 ArrayList<UFO> removedItems = new ArrayList<UFO>();
-
 int lastFruitTime = 0;
 int nextFruitInterval = 0;
-
 boolean flash = false; 
-float flashAlpha = 255; // Control the alpha (transparency) of the flash
+float flashAlpha = 255;
 
 void setup() {
   size(1000, 600);
@@ -20,6 +22,9 @@ void setup() {
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
   backgroundImage = loadImage("background.png");
+  playImage = loadImage("play.png");
+  pauseImage = loadImage("pause.png");
+  replayImage = loadImage("replay.png");
 }
 
 void generateRanFruit() {
@@ -53,15 +58,21 @@ void generateRanFruit() {
 }
 
 void endGame() {
+  background(#904A30);
   background(backgroundImage);
   fill(255);
+  fill(255);
+  text("Score: " + (int)score, 10, 10);
   rect(5,5,120,30);
+  text("Missed: " + (int)missedFruits, 10, 20);
   rect(5,40,120,30);
   fill(0);
   textSize(30);
   text("Score: " + (int)score, 10, 30);
   text("Missed: " + (int)missedFruits, 10, 65);
   println("Game Over! Final Score: " + (int)score);
+  println("Game Over! Final Score: " + (int)score);
+  text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 30, height / 2);
   fill(255);
   text("Game Over! Three fruits missed! Final Score: " + (int)score, width / 2 - 100, height / 2);
   noLoop();
@@ -77,7 +88,7 @@ void winGame(){
 
 void triggerFlash() {
   flash = true;
-  flashAlpha = 400; // Reset flashAlpha to a higher value for a longer-lasting effect
+  flashAlpha = 400;
 }
 
 void keyPressed() {
@@ -87,23 +98,39 @@ void keyPressed() {
   }
 }
 
-void mouseDragged() {
-  for (int i = itemList.size() - 1; i >= 0; i--) {
-    UFO currentIt = itemList.get(i);
-    if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
-      if (!currentIt.getName().equals("bomb.png")) {
-        score++;
-        removedItems.add(currentIt);
-      } else {
-        triggerFlash();
-      }
-      itemList.remove(i);
-      animate = false;
+void mousePressed() {
+  if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
+    isPaused = !isPaused; 
+  }
+  
+  if (isPaused) {
+    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 + 40 && mouseY <= height / 2 + 80) {
+      replay();
+      isPaused = false;
+    }
+    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 - 10 && mouseY <= height / 2 + 30) {
+      isPaused = false;
     }
   }
 }
 
-void mousePressed() {}
+void mouseDragged() {
+  if (!isPaused) {
+    for (int i = itemList.size() - 1; i >= 0; i--) {
+      UFO currentIt = itemList.get(i);
+      if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
+        if (!currentIt.getName().equals("bomb.png")) {
+          score++;
+          removedItems.add(currentIt);
+        } else {
+          triggerFlash();
+        }
+        itemList.remove(i);
+        animate = false;
+      }
+    }
+  }
+}
 
 void pauseGame() {}
 
@@ -115,84 +142,99 @@ void replay() {
 
 void draw() {
   background(backgroundImage);
-  fill(255);
-  rect(5,5,120,30);
+  fill(255); rect(5,5,120,30);
   rect(5,40,120,30);
   fill(0);
   textSize(30);
   text("Score: " + (int)score, 10, 30);
   text("Missed: " + (int)missedFruits, 10, 65);
-
-  int currentTime = millis();
-  if (currentTime - lastFruitTime >= nextFruitInterval) {
-    generateRanFruit();
+  if (isPaused) {
+    image(playImage, width - 60, 20, 40, 40);
+  } else {
+    image(pauseImage, width - 60, 20, 40, 40);
   }
 
-  for (UFO splatterIt : removedItems) {
-    splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
-    splatterIt.updateSplatter();
-    splatterIt.split(splatterIt.getX(), splatterIt.getY());
-  }
+  if (!isPaused) {
+    int currentTime = millis();
+    if (currentTime - lastFruitTime >= nextFruitInterval) {
+      generateRanFruit();
+    }
 
-  for (int i = itemList.size() - 1; i >= 0; i--) {
-    UFO currentIt = itemList.get(i);
-    currentIt.move();
-    currentIt.rotate(0.05);
-    
-    if (currentIt.getY() > height) {
-      if (!currentIt.getName().equals("bomb.png")) {
-        missedFruits++;
-        if (missedFruits >= 3) {
-          endGame();
+    for (UFO splatterIt : removedItems) {
+      splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
+      splatterIt.updateSplatter();
+      splatterIt.split(splatterIt.getX(), splatterIt.getY());
+    }
+
+    for (int i = itemList.size() - 1; i >= 0; i--) {
+      UFO currentIt = itemList.get(i);
+      currentIt.move();
+      currentIt.rotate(0.05);
+      if (currentIt.getY() > height) {
+        if (!currentIt.getName().equals("bomb.png")) {
+          missedFruits++;
+          if (missedFruits >= 3) {
+            endGame();
+          }
         }
-      }
-      if (score>=5){
+         if (score>=5){
     winGame();
   }
-      itemList.remove(i);
+        itemList.remove(i);
+      }
     }
-  }
 
-  for (int i = halfList.size() - 1; i >= 0; i--) {
-    UFO currentHalf = halfList.get(i);
-    currentHalf.move();
-    if (currentHalf.getY() > height) {
-      halfList.remove(i);
+    for (int i = halfList.size() - 1; i >= 0; i--) {
+      UFO currentHalf = halfList.get(i);
+      currentHalf.move();
+      if (currentHalf.getY() > height) {
+        halfList.remove(i);
+      }
     }
-  }
 
-  for (UFO currentIt : halfList) {
-    PImage fruit = loadImage(currentIt.getName());
-    pushMatrix();
-    PImage half = fruit;
-    if (currentIt.getHalf().equals("left")) {
-      half = fruit.get(0, 0, fruit.width / 2, fruit.height);
+    for (UFO currentIt : halfList) {
+      PImage fruit = loadImage(currentIt.getName());
+      pushMatrix();
+      PImage half = fruit;
+      if (currentIt.getHalf().equals("left")) {
+        half = fruit.get(0, 0, fruit.width / 2, fruit.height);
+      }
+      if (currentIt.getHalf().equals("right")) {
+        half = fruit.get(fruit.width / 2, 0, fruit.width / 2, fruit.height);
+      }
+      imageMode(CENTER);
+      image(half, currentIt.getX(), currentIt.getY());
+      popMatrix();
     }
-    if (currentIt.getHalf().equals("right")) {
-      half = fruit.get(fruit.width / 2, 0, fruit.width / 2, fruit.height);
-    }
-    imageMode(CENTER);
-    image(half, currentIt.getX(), currentIt.getY());
-    popMatrix();
-  }
 
-  for (UFO currentIt : itemList) {
-    PImage fruit = loadImage(currentIt.getName());
-    pushMatrix();
-    translate(currentIt.getX(), currentIt.getY());
-    rotate(currentIt.getRotationAngle());
-    imageMode(CENTER);
-    image(fruit, 0, 0);
-    popMatrix();
-  }
-
-  if (flash) {
-    fill(255, flashAlpha);
-    rect(0, 0, width, height);
-    flashAlpha -= 5; 
-    if (flashAlpha <= 0) {
-      flash = false;
-      endGame();
+    for (UFO currentIt : itemList) {
+      PImage fruit = loadImage(currentIt.getName());
+      pushMatrix();
+      translate(currentIt.getX(), currentIt.getY());
+      rotate(currentIt.getRotationAngle());
+      imageMode(CENTER);
+      image(fruit, 0, 0);
+      popMatrix();
     }
+
+    if (flash) {
+      fill(255, flashAlpha);
+      rect(0, 0, width, height);
+      flashAlpha -= 5; 
+      if (flashAlpha <= 0) {
+        flash = false;
+        endGame();
+      }
+    }
+  } else {
+      fill(0, 150);
+    rect(width / 2 - 100, height / 2 - 100, 200, 200, 10);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Game Paused", width / 2, height / 2 - 60);
+    rect(width / 2 - 50, height / 2 - 10, 100, 40, 5);
+    text("Play", width / 2, height / 2 + 10);
+    image(replayImage, width / 2 - 25, height / 2 + 40, 50, 50); 
   }
 }
