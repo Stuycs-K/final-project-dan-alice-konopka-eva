@@ -112,4 +112,4 @@ In class: Added a winGame method, updated endGame and draw() visually.
 In class: Not much progress made, started to change the end screens to be a bit more visually varied. Tried to implement different splatter angles; failed.
 
 ### 6/8/24
-At home: Adjusted replay button locations a little bit, visually changed end screens. Also added 1 more end screen keyboard shortcut.
+At home: Adjusted replay button locations a little bit, visually changed end screens. Also added 1 more end screen keyboard shortcut. Also changed missedFruits to display using red X's instead of just n/3.
