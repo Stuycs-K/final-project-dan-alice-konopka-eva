@@ -32,8 +32,8 @@ public class Mango extends Fruit {
   }
  
    @Override
-  void splatter(float x, float y, color c, float rotateAngle){
-  super.splatter(x,y,color(#ea9e06), 270);
+  void splatter(float x, float y, color c){
+  super.splatter(x,y,color(#ea9e06));
   }
 void split(float x, float y){
   super.split(x,y, getName());
