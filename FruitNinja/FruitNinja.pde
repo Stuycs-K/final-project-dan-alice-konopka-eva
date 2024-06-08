@@ -7,6 +7,7 @@ PImage playImage;
 PImage pauseImage;
 PImage replayImage;
 boolean isPaused = false;
+boolean isGameOver = false;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -34,6 +35,7 @@ void initializeGame() {
   generateRanFruit();
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
+  isGameOver = false;
   loop();
 }
 
@@ -79,7 +81,9 @@ void endGame() {
   text("Missed: " + (int)missedFruits + "/3", 75, 65);
   println("Game Over! Final Score: " + (int)score);
   fill(255);
-  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2-50);
+  image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
+  isGameOver = true;
   noLoop();
 }
 
@@ -88,6 +92,8 @@ void winGame() {
   fill(0);
   println("You won!");
   text("You Win!", width / 2 - 30, height / 2);
+  image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
+  isGameOver = true;
   noLoop();
 }
 
@@ -114,10 +120,17 @@ void mousePressed() {
       isPaused = false;
     }
   }
+  
+  if (isGameOver) {
+    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
+      initializeGame();
+      isGameOver = false;
+    }
+  }
 }
 
 void mouseDragged() {
-  if (!isPaused) {
+  if (!isPaused && !isGameOver) {
     for (int i = itemList.size() - 1; i >= 0; i--) {
       UFO currentIt = itemList.get(i);
       if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
@@ -137,7 +150,7 @@ void mouseDragged() {
 void draw() {
   if (score >= 5) {
     winGame();
-  } else {
+  } else if (!isGameOver) {
     background(backgroundImage);
     fill(255);
     textAlign(CENTER, CENTER);
