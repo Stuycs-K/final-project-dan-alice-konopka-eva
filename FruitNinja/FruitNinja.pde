@@ -107,7 +107,7 @@ void winGame() {
   fill(255);
   println("You won!");
   textSize(50);
-  text("You Win!", width / 2 - 50, height / 2-100);
+  text("You Win! Final Score: "+(int)score, width / 2 - 50, height / 2-100);
   image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
   isGameOver = true;
   noLoop();
@@ -208,7 +208,17 @@ void draw() {
     textAlign(CENTER, CENTER);
     textSize(30);
     text("Score: " + (int)score + "/5", 70, 30);
-    text("Missed: " + (int)missedFruits + "/3", 75, 65);
+   // text("Missed: " + (int)missedFruits + "/3", 75, 65);
+    text("Missed: ", 57, 65);
+    textSize(45);
+    fill(#FF0000);
+    for (int i = 0; i < missedFruits; i++) {
+        text("X", 115 + (i*30), 65);
+    }
+    fill(255);
+    for (int i = 0; i < (3 - missedFruits); i++) {
+       text("X", 115 + (i*30) + (missedFruits*30), 65);
+    }
     if (isPaused) {
       image(playImage, width - 60, 20, 40, 40);
     } else {
