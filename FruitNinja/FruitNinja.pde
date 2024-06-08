@@ -22,6 +22,10 @@ float watermelonRotation = 0;
 boolean watermelonSliced = false;
 float watermelonX, watermelonY;
 float splatterAlpha = 255;
+PImage leftHalf, rightHalf;
+float leftHalfY, rightHalfY;
+float leftHalfVelocityY, rightHalfVelocityY;
+float gravity = 0.3;
 
 void setup() {
   size(1000, 600);
@@ -48,6 +52,12 @@ void initializeGame() {
   watermelonY = height / 2 + 50;
   flashAlpha = 255;
   splatterAlpha = 255;
+  leftHalf = watermelonImage.get(0, 0, watermelonImage.width / 2, watermelonImage.height);
+  rightHalf = watermelonImage.get(watermelonImage.width / 2, 0, watermelonImage.width / 2, watermelonImage.height);
+  leftHalfY = watermelonY;
+  rightHalfY = watermelonY;
+  leftHalfVelocityY = random(-2, -1);
+  rightHalfVelocityY = random(-2, -1);
   loop();
 }
 
@@ -171,11 +181,23 @@ void draw() {
     if (watermelonSliced) {
       Watermelon tempWatermelon = new Watermelon();
       tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
+      imageMode(CENTER);
+      tint(255, splatterAlpha);
+      image(leftHalf, watermelonX - 50, leftHalfY, 50, 100);
+      image(rightHalf, watermelonX + 50, rightHalfY, 50, 100);
+      noTint();
       splatterAlpha -= 5;
+      
+      // Apply gravity to the halves
+      leftHalfY += leftHalfVelocityY;
+      rightHalfY += rightHalfVelocityY;
+      leftHalfVelocityY += gravity;
+      rightHalfVelocityY += gravity;
+      
       if (splatterAlpha <= 0) {
         isStartScreen = false;
-        lastFruitTime = millis();  // reset the timer for generating fruits
-        nextFruitInterval = (int)(Math.random() * 2000); // set next interval
+        lastFruitTime = millis();
+        nextFruitInterval = (int)(Math.random() * 2000);
       }
     } else {
       pushMatrix();
