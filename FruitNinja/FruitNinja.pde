@@ -6,8 +6,10 @@ PImage backgroundImage;
 PImage playImage;
 PImage pauseImage;
 PImage replayImage;
+PImage watermelonImage;
 boolean isPaused = false;
 boolean isGameOver = false;
+boolean isStartScreen = true;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -23,6 +25,7 @@ void setup() {
   playImage = loadImage("play.png");
   pauseImage = loadImage("pause.png");
   replayImage = loadImage("replay.png");
+  watermelonImage = loadImage("watermelon.png");
   initializeGame();
 }
 
@@ -36,6 +39,7 @@ void initializeGame() {
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
   isGameOver = false;
+  isStartScreen = true;
   loop();
 }
 
@@ -81,7 +85,7 @@ void endGame() {
   text("Missed: " + (int)missedFruits + "/3", 75, 65);
   println("Game Over! Final Score: " + (int)score);
   fill(255);
-  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2-50);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
   image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
   isGameOver = true;
   noLoop();
@@ -110,27 +114,29 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
-    isPaused = !isPaused;
-  }
-  
-  if (isPaused) {
+  if (isStartScreen) {
+    if (dist(mouseX, mouseY, width / 2, height / 2 + 50) < 100) {
+      isStartScreen = false;
+    }
+  } else if (isPaused) {
     if (mouseX >= width / 2 - 30 && mouseX <= width / 2 + 30 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 90) {
       initializeGame();
       isPaused = false;
     }
-  }
-  
-  if (isGameOver) {
+  } else if (isGameOver) {
     if (mouseX >= width / 2 - 70 && mouseX <= width / 2 + 70 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
       initializeGame();
       isGameOver = false;
+    }
+  } else {
+    if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
+      isPaused = !isPaused;
     }
   }
 }
 
 void mouseDragged() {
-  if (!isPaused && !isGameOver) {
+  if (!isPaused && !isGameOver && !isStartScreen) {
     for (int i = itemList.size() - 1; i >= 0; i--) {
       UFO currentIt = itemList.get(i);
       if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
@@ -148,7 +154,14 @@ void mouseDragged() {
 }
 
 void draw() {
-  if (score >= 5) {
+  if (isStartScreen) {
+    background(backgroundImage);
+    textAlign(CENTER, CENTER);
+    textSize(50);
+    fill(255);
+    text("Fruit Ninja", width / 2, height / 2 - 100);
+    image(watermelonImage, width / 2 - 50, height / 2, 100, 100);
+  } else if (score >= 5) {
     winGame();
   } else if (!isGameOver) {
     background(backgroundImage);
