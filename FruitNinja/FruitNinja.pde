@@ -182,11 +182,8 @@ void draw() {
       Watermelon tempWatermelon = new Watermelon();
       tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
       imageMode(CENTER);
-      tint(255, splatterAlpha);
       image(leftHalf, watermelonX - 50, leftHalfY, 50, 100);
       image(rightHalf, watermelonX + 50, rightHalfY, 50, 100);
-      noTint();
-      splatterAlpha -= 5;
       
       // Apply gravity to the halves
       leftHalfY += leftHalfVelocityY;
@@ -194,7 +191,7 @@ void draw() {
       leftHalfVelocityY += gravity;
       rightHalfVelocityY += gravity;
       
-      if (splatterAlpha <= 0) {
+      if (leftHalfY > height && rightHalfY > height) {
         isStartScreen = false;
         lastFruitTime = millis();
         nextFruitInterval = (int)(Math.random() * 2000);
