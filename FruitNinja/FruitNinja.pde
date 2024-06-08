@@ -123,6 +123,9 @@ void keyPressed() {
   if (key == 'e' || key == 'E') {
     endGame();
   }
+  if (key == 'W' || key == 'w'){
+    winGame();
+  }
 }
 
 void mousePressed() {
