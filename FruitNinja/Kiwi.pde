@@ -8,7 +8,7 @@ public class Kiwi extends Fruit {
  
   public Kiwi(){
   fruit = loadImage("kiwi.png");
-   splatterColor = color(255,0, 0);
+   splatterColor = color(#61ab5a);
   }
  
   int getXloc(){
@@ -35,6 +35,6 @@ void split(float x, float y){
   }
   @Override
   void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#68c51a));
+  super.splatter(x,y,color(#61ab5a));
   }
 }

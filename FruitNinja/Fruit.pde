@@ -1,7 +1,7 @@
 public class Fruit extends UFO {
   PImage fruit;
   boolean isSplit = false;
-  float alpha = 255; // Add alpha value for fading effect
+  float alpha = 255;
  
   @Override
   void splatter(float x, float y, color c){
@@ -32,7 +32,7 @@ public class Fruit extends UFO {
   
    void updateSplatter() {
     if (alpha > 0) {
-      alpha -= 5; // Decrease the alpha value to fade out
+      alpha -= 5; 
     }
   }
 
