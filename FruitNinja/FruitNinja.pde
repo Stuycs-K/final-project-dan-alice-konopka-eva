@@ -63,7 +63,6 @@ void initializeGame() {
 
 void generateRanFruit() {
   int random = (int)(Math.random() * 13);
-
   UFO randomFruit;
   if (random == 0) {
     randomFruit = new Banana();
@@ -181,16 +180,14 @@ void draw() {
     if (watermelonSliced) {
       Watermelon tempWatermelon = new Watermelon();
       tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
+      tempWatermelon.updateSplatter();
       imageMode(CENTER);
       image(leftHalf, watermelonX - 50, leftHalfY, 50, 100);
       image(rightHalf, watermelonX + 50, rightHalfY, 50, 100);
-      
-      // Apply gravity to the halves
       leftHalfY += leftHalfVelocityY;
       rightHalfY += rightHalfVelocityY;
       leftHalfVelocityY += gravity;
       rightHalfVelocityY += gravity;
-      
       if (leftHalfY > height && rightHalfY > height) {
         isStartScreen = false;
         lastFruitTime = millis();
@@ -214,25 +211,21 @@ void draw() {
     textSize(30);
     text("Score: " + (int)score + "/5", 70, 30);
     text("Missed: " + (int)missedFruits + "/3", 75, 65);
-
     if (isPaused) {
       image(playImage, width - 60, 20, 40, 40);
     } else {
       image(pauseImage, width - 60, 20, 40, 40);
     }
-
     if (!isPaused) {
       int currentTime = millis();
       if (currentTime - lastFruitTime >= nextFruitInterval) {
         generateRanFruit();
       }
-
       for (UFO splatterIt : removedItems) {
         splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0), 0);
         splatterIt.updateSplatter();
         splatterIt.split(splatterIt.getX(), splatterIt.getY());
       }
-
       for (int i = itemList.size() - 1; i >= 0; i--) {
         UFO currentIt = itemList.get(i);
         currentIt.move();
@@ -247,7 +240,6 @@ void draw() {
           itemList.remove(i);
         }
       }
-
       for (int i = halfList.size() - 1; i >= 0; i--) {
         UFO currentHalf = halfList.get(i);
         currentHalf.move();
@@ -255,7 +247,6 @@ void draw() {
           halfList.remove(i);
         }
       }
-
       for (UFO currentIt : halfList) {
         PImage fruit = loadImage(currentIt.getName());
         pushMatrix();
@@ -270,7 +261,6 @@ void draw() {
         image(half, currentIt.getX(), currentIt.getY());
         popMatrix();
       }
-
       for (UFO currentIt : itemList) {
         PImage fruit = loadImage(currentIt.getName());
         pushMatrix();
@@ -280,7 +270,6 @@ void draw() {
         image(fruit, 0, 0);
         popMatrix();
       }
-
       if (flash) {
         fill(255, flashAlpha);
         rect(0, 0, width, height);
