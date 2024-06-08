@@ -18,6 +18,9 @@ int lastFruitTime = 0;
 int nextFruitInterval = 0;
 boolean flash = false; 
 float flashAlpha = 255;
+float watermelonRotation = 0;
+boolean watermelonSliced = false;
+float watermelonX, watermelonY;
 
 void setup() {
   size(1000, 600);
@@ -40,6 +43,10 @@ void initializeGame() {
   nextFruitInterval = (int)(Math.random() * 2000);
   isGameOver = false;
   isStartScreen = true;
+  watermelonSliced = false;
+  watermelonX = width / 2;
+  watermelonY = height / 2 + 50;
+  flashAlpha = 255;
   loop();
 }
 
@@ -115,8 +122,8 @@ void keyPressed() {
 
 void mousePressed() {
   if (isStartScreen) {
-    if (dist(mouseX, mouseY, width / 2, height / 2 + 50) < 100) {
-      isStartScreen = false;
+    if (dist(mouseX, mouseY, watermelonX, watermelonY) < 50) {
+      watermelonSliced = true;
     }
   } else if (isPaused) {
     if (mouseX >= width / 2 - 30 && mouseX <= width / 2 + 30 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 90) {
@@ -160,7 +167,26 @@ void draw() {
     textSize(50);
     fill(255);
     text("Fruit Ninja", width / 2, height / 2 - 100);
-    image(watermelonImage, width / 2 - 50, height / 2, 100, 100);
+    if (watermelonSliced) {
+      fill(255, flashAlpha);
+      rect(0, 0, width, height);
+      fill(#ff0065, flashAlpha);
+      ellipse(watermelonX, watermelonY, 150, 150);
+      flashAlpha -= 5;
+      if (flashAlpha <= 0) {
+        flash = false;
+        isStartScreen = false;
+        initializeGame();
+      }
+    } else {
+      pushMatrix();
+      translate(watermelonX, watermelonY);
+      rotate(watermelonRotation);
+      imageMode(CENTER);
+      image(watermelonImage, 0, 0, 100, 100);
+      popMatrix();
+      watermelonRotation += 0.05;
+    }
   } else if (score >= 5) {
     winGame();
   } else if (!isGameOver) {
