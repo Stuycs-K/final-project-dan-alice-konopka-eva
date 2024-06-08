@@ -110,7 +110,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (mouseX >= width - 70 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 70) {
+  if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
     isPaused = !isPaused;
   }
   
@@ -122,7 +122,7 @@ void mousePressed() {
   }
   
   if (isGameOver) {
-    if (mouseX >= width / 2 - 50 && mouseX <= width / 2 + 50 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
+    if (mouseX >= width / 2 - 70 && mouseX <= width / 2 + 70 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
       initializeGame();
       isGameOver = false;
     }
