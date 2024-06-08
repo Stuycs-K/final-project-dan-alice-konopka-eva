@@ -1,35 +1,39 @@
-public class Bomb extends UFO{
-  PImage bombImage;
+public class Banana extends Fruit {
+  PImage fruit;
   float xLocation;
   float yLocation;
   boolean belowScreen;
-  
-  public Bomb(){
-    bombImage = loadImage("bomb.png");
-    xLocation = (float)(Math.random()*width);
-     yLocation = 0;
-     belowScreen = false;
+  boolean isSplit = false;
+ 
+  public Banana(){
+  fruit = loadImage("banana.png");
   }
-  
-  float getX(){
-    return xLocation;
+ 
+  float getXloc(){
+  return xLocation;
   }
-  
-  float getY(){
-    return yLocation;
+ 
+  float getYloc(){
+  return yLocation;
   }
-  void setX(float num){
-    xLocation=num;
+  void setXloc(float num){
+  xLocation=num;
   }
-  
-  void setY(float num){
-    yLocation=num;
+ 
+  void setYloc(float num){
+  yLocation=num;
   }
-  
-  void boom(){
-  }
-  
+ 
   String getName(){
-    return "bomb.png";
+  return "banana.png";
+  }
+
+   @Override
+  void splatter(float x, float y, color c){
+  super.splatter(x,y,color(#FFFBCB));
+  }
+ 
+  void split(float x, float y){
+  super.split(x,y, getName());
   }
 }
