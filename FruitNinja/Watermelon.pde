@@ -12,8 +12,8 @@ public class Watermelon extends Fruit {
   }
   
   @Override
-  void splatter(float x, float y, color c) {
-    super.splatter(x, y, color(#FF6040));
+  void splatter(float x, float y, color c, float rotateAngle) {
+    super.splatter(x, y, color(#FF6040), 30);
   }
   
   @Override

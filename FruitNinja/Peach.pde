@@ -32,8 +32,8 @@ public class Peach extends Fruit {
   }
  
    @Override
-  void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#ffae32));
+  void splatter(float x, float y, color c, float rotateAngle){
+  super.splatter(x,y,color(#ffae32), 120);
   }
 void split(float x, float y){
   super.split(x,y, getName());
