@@ -7,29 +7,27 @@ public class UFO {
 
   public UFO() {
     x = random(100, width - 100);
-    y = height - 50; // Start near the bottom of the screen
-    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
-    velocityY = random(-15,-20); // Initial velocity upwards, less height
+    y = height - 50;
+    velocityX = random(-1, 1); 
+    velocityY = random(-15,-20); 
     rotationAngle = random(0, TWO_PI);
   }
 
   public UFO(float x, float y) {
     this.x = x;
     this.y = y;
-    velocityX = random(-1, 1); // Adjust horizontal velocity for less side-to-side movement
-    velocityY = random(-12, -15); // Initial velocity upwards, less height
+    velocityX = random(-1, 1); 
+    velocityY = random(-12, -15); 
     rotationAngle = random(0, TWO_PI);
   }
 
   void move() {
     x += velocityX;
     y += velocityY;
-    velocityY += gravity; // Apply gravity to the vertical velocity
-
-    // Remove the fruit if it falls off the screen
+    velocityY += gravity; 
     if (y > height) {
-      y = height + 1; // Move the fruit just out of the visible screen to indicate it's removed
-      velocityY = 0;  // Stop the velocity
+      y = height + 1; 
+      velocityY = 0;
     }
   }
 
@@ -61,7 +59,7 @@ public class UFO {
     return "";
   }
 
-  void splatter(float x, float y, color c) {}
+  void splatter(float x, float y, color c, float rotateAngle) {}
 
   void split(float x, float y) {}
 

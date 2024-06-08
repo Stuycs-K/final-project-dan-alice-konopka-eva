@@ -33,8 +33,8 @@ public class Coconut extends Fruit {
   }
  
    @Override
-  void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#FCFBED));
+  void splatter(float x, float y, color c, float rotateAngle){
+  super.splatter(x,y,color(#FCFBED), 330);
   }
   void split(float x, float y){
     /*
