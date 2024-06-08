@@ -6,8 +6,10 @@ PImage backgroundImage;
 PImage playImage;
 PImage pauseImage;
 PImage replayImage;
+PImage watermelonImage;
 boolean isPaused = false;
 boolean isGameOver = false;
+boolean isStartScreen = true;
 String[] UFOnames = new String[] {"banana", "bomb", "coconut", "kiwi", "mango", "peach", "pineapple", "watermelon", "lemon"};
 boolean animate;
 float time;
@@ -16,6 +18,14 @@ int lastFruitTime = 0;
 int nextFruitInterval = 0;
 boolean flash = false; 
 float flashAlpha = 255;
+float watermelonRotation = 0;
+boolean watermelonSliced = false;
+float watermelonX, watermelonY;
+float splatterAlpha = 255;
+PImage leftHalf, rightHalf;
+float leftHalfY, rightHalfY;
+float leftHalfVelocityY, rightHalfVelocityY;
+float gravity = 0.3;
 
 void setup() {
   size(1000, 600);
@@ -23,6 +33,7 @@ void setup() {
   playImage = loadImage("play.png");
   pauseImage = loadImage("pause.png");
   replayImage = loadImage("replay.png");
+  watermelonImage = loadImage("watermelon.png");
   initializeGame();
 }
 
@@ -32,10 +43,21 @@ void initializeGame() {
   itemList.clear();
   halfList.clear();
   removedItems.clear();
-  generateRanFruit();
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
   isGameOver = false;
+  isStartScreen = true;
+  watermelonSliced = false;
+  watermelonX = width / 2;
+  watermelonY = height / 2 + 50;
+  flashAlpha = 255;
+  splatterAlpha = 255;
+  leftHalf = watermelonImage.get(0, 0, watermelonImage.width / 2, watermelonImage.height);
+  rightHalf = watermelonImage.get(watermelonImage.width / 2, 0, watermelonImage.width / 2, watermelonImage.height);
+  leftHalfY = watermelonY;
+  rightHalfY = watermelonY;
+  leftHalfVelocityY = random(-2, -1);
+  rightHalfVelocityY = random(-2, -1);
   loop();
 }
 
@@ -81,7 +103,7 @@ void endGame() {
   text("Missed: " + (int)missedFruits + "/3", 75, 65);
   println("Game Over! Final Score: " + (int)score);
   fill(255);
-  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2-50);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
   image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
   isGameOver = true;
   noLoop();
@@ -110,27 +132,29 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
-    isPaused = !isPaused;
-  }
-  
   if (isPaused) {
     if (mouseX >= width / 2 - 30 && mouseX <= width / 2 + 30 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 90) {
       initializeGame();
       isPaused = false;
     }
-  }
-  
-  if (isGameOver) {
+  } else if (isGameOver) {
     if (mouseX >= width / 2 - 70 && mouseX <= width / 2 + 70 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
       initializeGame();
       isGameOver = false;
+    }
+  } else {
+    if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
+      isPaused = !isPaused;
     }
   }
 }
 
 void mouseDragged() {
-  if (!isPaused && !isGameOver) {
+  if (isStartScreen) {
+    if (dist(mouseX, mouseY, watermelonX, watermelonY) < 50) {
+      watermelonSliced = true;
+    }
+  } else if (!isPaused && !isGameOver) {
     for (int i = itemList.size() - 1; i >= 0; i--) {
       UFO currentIt = itemList.get(i);
       if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
@@ -148,7 +172,43 @@ void mouseDragged() {
 }
 
 void draw() {
-  if (score >= 5) {
+  if (isStartScreen) {
+    background(backgroundImage);
+    textAlign(CENTER, CENTER);
+    textSize(50);
+    fill(255);
+    text("Fruit Ninja", width / 2, height / 2 - 100);
+    if (watermelonSliced) {
+      Watermelon tempWatermelon = new Watermelon();
+      tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
+      imageMode(CENTER);
+      tint(255, splatterAlpha);
+      image(leftHalf, watermelonX - 50, leftHalfY, 50, 100);
+      image(rightHalf, watermelonX + 50, rightHalfY, 50, 100);
+      noTint();
+      splatterAlpha -= 5;
+      
+      // Apply gravity to the halves
+      leftHalfY += leftHalfVelocityY;
+      rightHalfY += rightHalfVelocityY;
+      leftHalfVelocityY += gravity;
+      rightHalfVelocityY += gravity;
+      
+      if (splatterAlpha <= 0) {
+        isStartScreen = false;
+        lastFruitTime = millis();
+        nextFruitInterval = (int)(Math.random() * 2000);
+      }
+    } else {
+      pushMatrix();
+      translate(watermelonX, watermelonY);
+      rotate(watermelonRotation);
+      imageMode(CENTER);
+      image(watermelonImage, 0, 0, 100, 100);
+      popMatrix();
+      watermelonRotation += 0.05;
+    }
+  } else if (score >= 5) {
     winGame();
   } else if (!isGameOver) {
     background(backgroundImage);

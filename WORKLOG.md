@@ -68,7 +68,8 @@ At home: worked on the pause button, created code for a menu that would pop up w
 
 ### 6/7/24
 
-Fixed visuals and function of pause button, fixed bug with text positioning in win and end screens, fixed win screens (mostly for testing)
+In class: Fixed visuals and function of pause button, fixed bug with text positioning in win and end screens, fixed win screens (mostly for testing)
+At home: Fixed end screen not properly displaying a replay button, hitboxes for all buttons, and started work on a start screen. Also made a variable tracking the status of the game
 
 ## GROUP MEMBER 2 - Eva
 
