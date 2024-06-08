@@ -21,6 +21,7 @@ float flashAlpha = 255;
 float watermelonRotation = 0;
 boolean watermelonSliced = false;
 float watermelonX, watermelonY;
+float splatterAlpha = 255;
 
 void setup() {
   size(1000, 600);
@@ -38,7 +39,6 @@ void initializeGame() {
   itemList.clear();
   halfList.clear();
   removedItems.clear();
-  generateRanFruit();
   lastFruitTime = millis();
   nextFruitInterval = (int)(Math.random() * 2000);
   isGameOver = false;
@@ -47,6 +47,7 @@ void initializeGame() {
   watermelonX = width / 2;
   watermelonY = height / 2 + 50;
   flashAlpha = 255;
+  splatterAlpha = 255;
   loop();
 }
 
@@ -121,11 +122,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (isStartScreen) {
-    if (dist(mouseX, mouseY, watermelonX, watermelonY) < 50) {
-      watermelonSliced = true;
-    }
-  } else if (isPaused) {
+  if (isPaused) {
     if (mouseX >= width / 2 - 30 && mouseX <= width / 2 + 30 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 90) {
       initializeGame();
       isPaused = false;
@@ -143,7 +140,11 @@ void mousePressed() {
 }
 
 void mouseDragged() {
-  if (!isPaused && !isGameOver && !isStartScreen) {
+  if (isStartScreen) {
+    if (dist(mouseX, mouseY, watermelonX, watermelonY) < 50) {
+      watermelonSliced = true;
+    }
+  } else if (!isPaused && !isGameOver) {
     for (int i = itemList.size() - 1; i >= 0; i--) {
       UFO currentIt = itemList.get(i);
       if (dist(mouseX, mouseY, currentIt.getX(), currentIt.getY()) < 50) {
@@ -168,15 +169,13 @@ void draw() {
     fill(255);
     text("Fruit Ninja", width / 2, height / 2 - 100);
     if (watermelonSliced) {
-      fill(255, flashAlpha);
-      rect(0, 0, width, height);
-      fill(#ff0065, flashAlpha);
-      ellipse(watermelonX, watermelonY, 150, 150);
-      flashAlpha -= 5;
-      if (flashAlpha <= 0) {
-        flash = false;
+      Watermelon tempWatermelon = new Watermelon();
+      tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
+      splatterAlpha -= 5;
+      if (splatterAlpha <= 0) {
         isStartScreen = false;
-        initializeGame();
+        lastFruitTime = millis();  // reset the timer for generating fruits
+        nextFruitInterval = (int)(Math.random() * 2000); // set next interval
       }
     } else {
       pushMatrix();
