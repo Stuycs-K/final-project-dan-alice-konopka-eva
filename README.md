@@ -15,10 +15,9 @@ The main classes in this project include the FruitNinja class, which manages the
 Slice the rotating watermelon that appears at the beginning to start the game. Slice the fruits when they come onto the screen by dragging and clicking your mouse across them. If you miss 3 fruits, the game ends. If you slice 10 fruits, you win. You lose if you slice a bomb. To pause the game, click the pause button. To replay, click the replay button (when prompted). To pause the game, click the pause button at the top right. You can click the replay button in the center or the play button at the top right from this menu.
 
 Shortcuts:
-
 press the 'e' button on your keyboard to see the lose screen.
-
 press the 'w' button on your keyboard to see the win screen.
+press the 'r' button on your keyboard to replay.
 
 ## Presentation
 https://drive.google.com/file/d/1R6h3R0pguUIfKI9tsuWIqyR4NeBcInuC/view?usp=drive_link
