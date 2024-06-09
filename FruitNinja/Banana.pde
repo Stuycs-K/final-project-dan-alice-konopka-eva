@@ -29,8 +29,8 @@ public class Banana extends Fruit {
   }
 
    @Override
-  void splatter(float x, float y, color c, float rotateAngle){
-  super.splatter(x,y,color(#FFFBCB), 180);
+  void splatter(float x, float y, color c){
+  super.splatter(x,y,color(#FFFBCB));
   }
  
   void split(float x, float y){

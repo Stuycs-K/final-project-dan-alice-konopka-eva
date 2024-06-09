@@ -93,16 +93,10 @@ void generateRanFruit() {
 void endGame() {
   background(backgroundImage);
   fill(255);
-  rect(5, 5, 150, 50);
-  rect(5, 40, 150, 50);
-  fill(0);
   textAlign(CENTER, CENTER);
-  textSize(30);
-  text("Score: " + (int)score + "/5", 70, 30);
-  text("Missed: " + (int)missedFruits + "/3", 75, 65);
   println("Game Over! Final Score: " + (int)score);
-  fill(255);
-  text("Game Over! Final Score: " + (int)score, width / 2 - 100, height / 2);
+  textSize(50);
+  text("Game Over! Final Score: " + (int)score, width / 2 - 70, height / 2-100);
   image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
   isGameOver = true;
   noLoop();
@@ -110,9 +104,10 @@ void endGame() {
 
 void winGame() {
   background(#3f9546);
-  fill(0);
+  fill(255);
   println("You won!");
-  text("You Win!", width / 2 - 30, height / 2);
+  textSize(50);
+  text("You Win! Final Score: "+(int)score, width / 2 - 50, height / 2-100);
   image(replayImage, width / 2 - 50, height / 2 + 30, 100, 100);
   isGameOver = true;
   noLoop();
@@ -128,6 +123,9 @@ void keyPressed() {
   if (key == 'e' || key == 'E') {
     endGame();
   }
+  if (key == 'W' || key == 'w'){
+    winGame();
+  }
 }
 
 void mousePressed() {
@@ -137,7 +135,7 @@ void mousePressed() {
       isPaused = false;
     }
   } else if (isGameOver) {
-    if (mouseX >= width / 2 - 70 && mouseX <= width / 2 + 70 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 130) {
+    if (mouseX >= width / 2 - 100 && mouseX <= width / 2  && mouseY >= height / 2 - 20 && mouseY <= height / 2 + 130) {
       initializeGame();
       isGameOver = false;
     }
@@ -179,7 +177,7 @@ void draw() {
     text("Fruit Ninja", width / 2, height / 2 - 100);
     if (watermelonSliced) {
       Watermelon tempWatermelon = new Watermelon();
-      tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040), 0);
+      tempWatermelon.splatter(watermelonX, watermelonY, color(#FF6040));
       tempWatermelon.updateSplatter();
       imageMode(CENTER);
       image(leftHalf, watermelonX - 50, leftHalfY, 50, 100);
@@ -210,7 +208,17 @@ void draw() {
     textAlign(CENTER, CENTER);
     textSize(30);
     text("Score: " + (int)score + "/5", 70, 30);
-    text("Missed: " + (int)missedFruits + "/3", 75, 65);
+   // text("Missed: " + (int)missedFruits + "/3", 75, 65);
+    text("Missed: ", 57, 65);
+    textSize(45);
+    fill(#FF0000);
+    for (int i = 0; i < missedFruits; i++) {
+        text("X", 115 + (i*30), 65);
+    }
+    fill(255);
+    for (int i = 0; i < (3 - missedFruits); i++) {
+       text("X", 115 + (i*30) + (missedFruits*30), 65);
+    }
     if (isPaused) {
       image(playImage, width - 60, 20, 40, 40);
     } else {
@@ -222,7 +230,7 @@ void draw() {
         generateRanFruit();
       }
       for (UFO splatterIt : removedItems) {
-        splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0), 0);
+        splatterIt.splatter(splatterIt.getX(), splatterIt.getY(), color(0));
         splatterIt.updateSplatter();
         splatterIt.split(splatterIt.getX(), splatterIt.getY());
       }
@@ -286,7 +294,7 @@ void draw() {
       textSize(20);
       textAlign(CENTER, CENTER);
       text("Game Paused", width / 2, height / 2 - 60);
-      image(replayImage, width / 2 - 25, height / 2 + 40, 50, 50); 
+      image(replayImage, width / 2 , height / 2 + 40, 50, 50); 
     }
   }
 }

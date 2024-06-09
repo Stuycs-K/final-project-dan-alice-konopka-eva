@@ -4,7 +4,7 @@ public class Fruit extends UFO {
   float alpha = 255;
  
   @Override
-  void splatter(float x, float y, color c, float rotateAngle){
+  void splatter(float x, float y, color c){
   noStroke();
   fill(red(c), green(c), blue(c), alpha); 
   float scaleBy = 2.5;
