@@ -199,14 +199,14 @@ void draw() {
       popMatrix();
       watermelonRotation += 0.05;
     }
-  } else if (score >= 5) {
+  } else if (score >= 10) {
     winGame();
   } else if (!isGameOver) {
     background(backgroundImage);
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(30);
-    text("Score: " + (int)score + "/5", 70, 30);
+    text("Score: " + (int)score + "/10", 70, 30);
     text("Missed: ", 57, 65);
     textSize(45);
     fill(#FF0000);
