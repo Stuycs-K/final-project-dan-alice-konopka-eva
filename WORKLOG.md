@@ -73,7 +73,7 @@ At home: Fixed end screen not properly displaying a replay button, hitboxes for 
 
 ### 6/8/24
 
-At home: Fixed issues with pause menu buttons not working, fixed minor win screen issues, fixed time it takes to win the game, added keyboard shortcut to automatically win
+At home: Fixed issues with pause menu buttons not working, fixed minor win screen issues, fixed time it takes to win the game
 
 ## GROUP MEMBER 2 - Eva
 
