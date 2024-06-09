@@ -126,6 +126,9 @@ void keyPressed() {
   if (key == 'W' || key == 'w'){
     winGame();
   }
+  if (key == 'r' || key == 'R') {
+    initializeGame();
+  }
 }
 
 void mousePressed() {
