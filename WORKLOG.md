@@ -73,7 +73,11 @@ At home: Fixed end screen not properly displaying a replay button, hitboxes for 
 
 ### 6/8/24
 
-At home: Fixed issues with pause menu buttons not working, fixed minor win screen issues, fixed time it takes to win the game
+At home: Fixed issues with pause menu buttons not working, fixed minor win screen issues, fixed time it takes to win the game, updated readme
+
+### 6/9/24
+
+At home: fixed problem with replay button on pause screen, uploaded video presentation, keyboard shortcut to replay
 
 ## GROUP MEMBER 2 - Eva
 
