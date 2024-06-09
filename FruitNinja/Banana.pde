@@ -1,39 +1,19 @@
 public class Banana extends Fruit {
-  PImage fruit;
-  float xLocation;
-  float yLocation;
-  boolean belowScreen;
   boolean isSplit = false;
  
   public Banana(){
-  fruit = loadImage("banana.png");
-  }
- 
-  float getXloc(){
-  return xLocation;
-  }
- 
-  float getYloc(){
-  return yLocation;
-  }
-  void setXloc(float num){
-  xLocation=num;
-  }
- 
-  void setYloc(float num){
-  yLocation=num;
+    fruit = loadImage("banana.png");
   }
  
   String getName(){
-  return "banana.png";
+    return "banana.png";
   }
 
-   @Override
   void splatter(float x, float y, color c){
-  super.splatter(x,y,color(#FFFBCB));
+    super.splatter(x,y,color(#FFFBCB));
   }
  
   void split(float x, float y){
-  super.split(x,y, getName());
+    super.split(x,y, getName());
   }
 }
