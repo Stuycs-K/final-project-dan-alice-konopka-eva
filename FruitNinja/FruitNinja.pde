@@ -130,8 +130,7 @@ void keyPressed() {
 
 void mousePressed() {
   if (isPaused) {
-    if (mouseX >= width / 2 - 30 && mouseX <= width / 2 + 30 && mouseY >= height / 2 + 30 && mouseY <= height / 2 + 90) {
-      initializeGame();
+    if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
       isPaused = false;
     }
   } else if (isGameOver) {
@@ -140,7 +139,7 @@ void mousePressed() {
       isGameOver = false;
     }
   } else {
-    if (mouseX >= width - 80 && mouseX <= width - 10 && mouseY >= 10 && mouseY <= 80) {
+    if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
       isPaused = !isPaused;
     }
   }
@@ -200,15 +199,14 @@ void draw() {
       popMatrix();
       watermelonRotation += 0.05;
     }
-  } else if (score >= 5) {
+  } else if (score >= 10) {
     winGame();
   } else if (!isGameOver) {
     background(backgroundImage);
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(30);
-    text("Score: " + (int)score + "/5", 70, 30);
-   // text("Missed: " + (int)missedFruits + "/3", 75, 65);
+    text("Score: " + (int)score + "/10", 70, 30);
     text("Missed: ", 57, 65);
     textSize(45);
     fill(#FF0000);
