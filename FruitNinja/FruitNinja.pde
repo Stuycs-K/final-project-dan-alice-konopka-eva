@@ -133,6 +133,10 @@ void mousePressed() {
     if (mouseX >= width - 60 && mouseX <= width - 20 && mouseY >= 20 && mouseY <= 60) {
       isPaused = false;
     }
+    if (mouseX >= width / 2 - 25 && mouseX <= width / 2 + 25 && mouseY >= height / 2 + 40 && mouseY <= height / 2 + 90) {
+      initializeGame();
+      isPaused = false;
+    }
   } else if (isGameOver) {
     if (mouseX >= width / 2 - 100 && mouseX <= width / 2  && mouseY >= height / 2 - 20 && mouseY <= height / 2 + 130) {
       initializeGame();
